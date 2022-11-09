@@ -12,3 +12,7 @@ export const getTopRated = () => {
 export const getPopular = () => {
   return client.get(`movie/popular?api_key=${API_KEY}`).then((res) => res.data);
 };
+
+export const getUpcoming = () => {
+  return client.get(`movie/upcoming?api_key=${API_KEY}`).then((res) => res.data);
+};
