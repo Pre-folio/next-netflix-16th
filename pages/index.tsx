@@ -1,12 +1,10 @@
-import Head from "next/head";
-import Image from "next/image";
-import Navigation from "../components/Navigation";
-import styles from "../styles/Home.module.css";
+import Head from 'next/head';
+import Image from 'next/image';
+import Navigation from '../components/elements/Navigation';
+import styles from '../styles/Home.module.css';
 
-export default function Home() {
-  return (
-    <div>
-      <Navigation />
-    </div>
-  );
-}
+const LandingPage = () => {
+  return <div>landingPage</div>;
+};
+
+export default LandingPage;
