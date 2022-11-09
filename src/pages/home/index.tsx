@@ -1,8 +1,9 @@
-import { getNowPlaying } from '../../api/getMovies';
-import client from '../../api/client';
+import { getNowPlaying, getTopRated, getPopular } from '../../api/getMovies';
 
-const HomePage = ({ data }: any) => {
-  console.log(data);
+const HomePage = ({ nowPlayingData, topRatedData, popularData }: any) => {
+  console.log(nowPlayingData);
+  console.log(topRatedData);
+  console.log(popularData);
 
   return <h1>HomePage</h1>;
 };
@@ -10,6 +11,9 @@ const HomePage = ({ data }: any) => {
 export default HomePage;
 
 export async function getServerSideProps() {
-  const data = await getNowPlaying();
-  return { props: { data } };
+  const nowPlayingData = await getNowPlaying();
+  const topRatedData = await getTopRated();
+  const popularData = await getPopular();
+
+  return { props: { nowPlayingData, topRatedData, popularData } };
 }
