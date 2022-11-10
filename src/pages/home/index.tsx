@@ -14,6 +14,7 @@ import {
   topRatedMoviesState,
   upComingMoviesState,
 } from '../../states/homeState';
+import { Column } from '../../components/elements/Column';
 
 const HomePage = ({ nowPlayingData, topRatedData, popularData, upComingData }: any) => {
   const [nowPlayingMovies, setNowPlayingMovies] = useRecoilState(nowPlyingMoviesState);
@@ -26,6 +27,7 @@ const HomePage = ({ nowPlayingData, topRatedData, popularData, upComingData }: a
   setPopularMovies(popularData.results);
   setUpComingMovies(upComingData.results);
 
+  // 나중에 없애기. 확인하면서 작업하는 용도
   console.log(nowPlayingData.results);
   console.log(topRatedData.results);
   console.log(popularData.results);
@@ -34,20 +36,57 @@ const HomePage = ({ nowPlayingData, topRatedData, popularData, upComingData }: a
   return (
     <HomePageContainer>
       <Navigation />
-      <MoviesListBar title="Previews" gap="23px">
-        {upComingMovies.map((movie) => {
-          const imagePath = movie.backdrop_path;
-          return (
-            <CircularThumbnail
-              key={movie.id}
-              id={movie.id}
-              imageSrc={`https://image.tmdb.org/t/p/original${imagePath}`}
-            />
-          );
-        })}
-      </MoviesListBar>
+      <Column gap="22px">
+        <MoviesListBar title="Previews" gap="23px">
+          {upComingMovies.map((movie) => {
+            const imagePath = movie.backdrop_path;
+            return (
+              <CircularThumbnail
+                key={movie.id}
+                id={movie.id}
+                imageSrc={`https://image.tmdb.org/t/p/original${imagePath}`}
+              />
+            );
+          })}
+        </MoviesListBar>
+        <MoviesListBar title="Now Playing" gap="14px" marginTop="6px">
+          {nowPlayingMovies.map((movie) => {
+            const imagePath = movie.backdrop_path;
+            return (
+              <RectangularThumbnail
+                key={movie.id}
+                id={movie.id}
+                imageSrc={`https://image.tmdb.org/t/p/original${imagePath}`}
+              />
+            );
+          })}
+        </MoviesListBar>
+        <MoviesListBar title="Top Rated" gap="14px">
+          {topRatedMovies.map((movie) => {
+            const imagePath = movie.backdrop_path;
+            return (
+              <RectangularThumbnail
+                key={movie.id}
+                id={movie.id}
+                imageSrc={`https://image.tmdb.org/t/p/original${imagePath}`}
+              />
+            );
+          })}
+        </MoviesListBar>
+        <MoviesListBar title="Popular" gap="14px">
+          {popularMovies.map((movie) => {
+            const imagePath = movie.backdrop_path;
+            return (
+              <RectangularThumbnail
+                key={movie.id}
+                id={movie.id}
+                imageSrc={`https://image.tmdb.org/t/p/original${imagePath}`}
+              />
+            );
+          })}
+        </MoviesListBar>
+      </Column>
 
-      <RectangularThumbnail />
       <Footer />
     </HomePageContainer>
   );

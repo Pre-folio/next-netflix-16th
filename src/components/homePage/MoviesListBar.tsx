@@ -7,11 +7,12 @@ type MoviesListBarProps = {
   children: React.ReactNode;
   title: string;
   gap: string;
+  marginTop?: string;
 };
 
 const MoviesListBar = (props: MoviesListBarProps) => {
   return (
-    <Wrapper>
+    <Wrapper style={{ marginTop: props.marginTop }}>
       <Column gap={props.gap}>
         <div style={{ marginLeft: '4px' }}>{props.title}</div>
         <ContentWrapper>{props.children}</ContentWrapper>
@@ -26,7 +27,7 @@ const Wrapper = styled.div`
   padding-left: 12px;
   color: white;
   font-size: 26px;
-  overflow-x: auto;
+  overflow-x: hidden;
   /* background-color: white; */
 `;
 
