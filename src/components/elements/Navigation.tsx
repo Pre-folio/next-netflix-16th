@@ -12,6 +12,9 @@ const Navigation = () => (
 export default Navigation;
 
 const Wrapper = styled.nav`
+  position: absolute;
+  top: 0;
+
   margin: 24px 16px 24px 16px;
 
   width: 338px;
