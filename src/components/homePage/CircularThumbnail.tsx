@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const CircularThumbnail = () => {
   return <Wrapper>{/* <Image /> */}</Wrapper>;
@@ -10,5 +10,5 @@ const Wrapper = styled.div`
   width: 102px;
   height: 102px;
   border-radius: 50%;
-  background-color: black;
+  background-color: white;
 `;
