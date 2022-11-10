@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import lottie from "public/images/logo-lottie.json";
+import lottie from "../../../public/images/logo-lottie.json";
 import Lottie from "react-lottie";
 import styled from "styled-components";
 
