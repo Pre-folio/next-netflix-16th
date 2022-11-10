@@ -12,8 +12,10 @@ const Navigation = () => (
 export default Navigation;
 
 const Wrapper = styled.nav`
-  position: absolute;
+  position: relative;
   top: 0;
+
+  z-index: 2;
 
   margin: 24px 16px 24px 16px;
 
@@ -23,8 +25,6 @@ const Wrapper = styled.nav`
   display: flex;
   align-items: center;
   justify-content: space-between;
-
-  z-index: 1;
 `;
 
 const Logo = styled.img`
