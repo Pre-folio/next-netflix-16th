@@ -4,25 +4,49 @@ import Navigation from '../../components/elements/Navigation';
 import { getNowPlaying, getTopRated, getPopular, getUpcoming } from '../../api/getMovies';
 import CircularThumbnail from '../../components/homePage/CircularThumbnail';
 import RectangularThumbnail from '../../components/homePage/RectangularThumbnail';
+import MoviesListBar from '../../components/homePage/MoviesListBar';
+import { Row } from '../../components/elements/Row';
 import Image from 'next/image';
+import { useRecoilState } from 'recoil';
+import {
+  nowPlyingMoviesState,
+  popularMoviesState,
+  topRatedMoviesState,
+  upComingMoviesState,
+} from '../../states/homeState';
 
 const HomePage = ({ nowPlayingData, topRatedData, popularData, upComingData }: any) => {
-  console.log(nowPlayingData);
-  console.log(topRatedData);
-  console.log(popularData);
-  console.log(upComingData);
+  const [nowPlayingMovies, setNowPlayingMovies] = useRecoilState(nowPlyingMoviesState);
+  const [topRatedMovies, setTopRatedMovies] = useRecoilState(topRatedMoviesState);
+  const [popularMovies, setPopularMovies] = useRecoilState(popularMoviesState);
+  const [upComingMovies, setUpComingMovies] = useRecoilState(upComingMoviesState);
 
-  const onClick = () => {
-    console.log('hi');
-  };
+  setNowPlayingMovies(nowPlayingData.results);
+  setTopRatedMovies(topRatedData.results);
+  setPopularMovies(popularData.results);
+  setUpComingMovies(upComingData.results);
 
-  const url = upComingData.results[0].backdrop_path;
+  console.log(nowPlayingData.results);
+  console.log(topRatedData.results);
+  console.log(popularData.results);
+  console.log(upComingData.results);
 
   return (
     <HomePageContainer>
       <Navigation />
-      <h1>HomePage</h1>
-      <CircularThumbnail onClick={onClick} imageSrc={`https://image.tmdb.org/t/p/original${url}`} />
+      <MoviesListBar title="Previews" gap="23px">
+        {upComingMovies.map((movie) => {
+          const imagePath = movie.backdrop_path;
+          return (
+            <CircularThumbnail
+              key={movie.id}
+              id={movie.id}
+              imageSrc={`https://image.tmdb.org/t/p/original${imagePath}`}
+            />
+          );
+        })}
+      </MoviesListBar>
+
       <RectangularThumbnail />
       <Footer />
     </HomePageContainer>
@@ -37,7 +61,8 @@ const HomePageContainer = styled.div`
 
   display: flex;
   flex-direction: column;
-  align-items: center;
+  /* overflow-x: scroll; */
+  /* align-items: center; */
 `;
 
 export async function getServerSideProps() {
