@@ -28,7 +28,7 @@ const Wrapper = styled.div`
   padding-left: 12px;
   color: white;
   font-size: 26px;
-  overflow-x: auto;
+  overflow-x: scroll;
   /* background-color: white; */
 `;
 

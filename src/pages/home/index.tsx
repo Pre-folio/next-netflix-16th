@@ -50,59 +50,62 @@ const HomePage = ({
 
   return (
     <HomePageContainer>
-      <Navigation />
-      <BackgroundImage />
-      <PlayBar />
-      <Column gap="22px">
-        <MoviesListBar title="Previews" gap="23px">
-          {upComingMovies.map((movie) => {
-            const imagePath = movie.backdrop_path;
-            return (
-              <CircularThumbnail
-                key={movie.id}
-                id={movie.id}
-                imageSrc={`https://image.tmdb.org/t/p/original${imagePath}`}
-              />
-            );
-          })}
-        </MoviesListBar>
-        <MoviesListBar title="Now Playing" gap="14px" marginTop="6px">
-          {nowPlayingMovies.map((movie) => {
-            const imagePath = movie.backdrop_path;
-            return (
-              <RectangularThumbnail
-                key={movie.id}
-                id={movie.id}
-                imageSrc={`https://image.tmdb.org/t/p/original${imagePath}`}
-              />
-            );
-          })}
-        </MoviesListBar>
-        <MoviesListBar title="Top Rated" gap="14px">
-          {topRatedMovies.map((movie) => {
-            const imagePath = movie.backdrop_path;
-            return (
-              <RectangularThumbnail
-                key={movie.id}
-                id={movie.id}
-                imageSrc={`https://image.tmdb.org/t/p/original${imagePath}`}
-              />
-            );
-          })}
-        </MoviesListBar>
-        <MoviesListBar title="Popular" gap="14px">
-          {popularMovies.map((movie) => {
-            const imagePath = movie.backdrop_path;
-            return (
-              <RectangularThumbnail
-                key={movie.id}
-                id={movie.id}
-                imageSrc={`https://image.tmdb.org/t/p/original${imagePath}`}
-              />
-            );
-          })}
-        </MoviesListBar>
-      </Column>
+      <Wrapper>
+        <Navigation />
+        <BackgroundImage />
+        <PlayBar />
+
+        <Column gap="22px">
+          <MoviesListBar title="Previews" gap="23px">
+            {upComingMovies.map((movie) => {
+              const imagePath = movie.backdrop_path;
+              return (
+                <CircularThumbnail
+                  key={movie.id}
+                  id={movie.id}
+                  imageSrc={`https://image.tmdb.org/t/p/original${imagePath}`}
+                />
+              );
+            })}
+          </MoviesListBar>
+          <MoviesListBar title="Now Playing" gap="14px" marginTop="6px">
+            {nowPlayingMovies.map((movie) => {
+              const imagePath = movie.backdrop_path;
+              return (
+                <RectangularThumbnail
+                  key={movie.id}
+                  id={movie.id}
+                  imageSrc={`https://image.tmdb.org/t/p/original${imagePath}`}
+                />
+              );
+            })}
+          </MoviesListBar>
+          <MoviesListBar title="Top Rated" gap="14px">
+            {topRatedMovies.map((movie) => {
+              const imagePath = movie.backdrop_path;
+              return (
+                <RectangularThumbnail
+                  key={movie.id}
+                  id={movie.id}
+                  imageSrc={`https://image.tmdb.org/t/p/original${imagePath}`}
+                />
+              );
+            })}
+          </MoviesListBar>
+          <MoviesListBar title="Popular" gap="14px">
+            {popularMovies.map((movie) => {
+              const imagePath = movie.backdrop_path;
+              return (
+                <RectangularThumbnail
+                  key={movie.id}
+                  id={movie.id}
+                  imageSrc={`https://image.tmdb.org/t/p/original${imagePath}`}
+                />
+              );
+            })}
+          </MoviesListBar>
+        </Column>
+      </Wrapper>
 
       <Footer />
     </HomePageContainer>
@@ -118,6 +121,12 @@ const HomePageContainer = styled.div`
   display: flex;
   flex-direction: column;
 
+  /* overflow-x: scroll; */
+  /* align-items: center; */
+`;
+
+const Wrapper = styled.div`
+  overflow-y: auto;
   /* overflow-x: scroll; */
   /* align-items: center; */
 `;
