@@ -4,26 +4,89 @@ import Navigation from '../../components/elements/Navigation';
 import { getNowPlaying, getTopRated, getPopular, getUpcoming } from '../../api/getMovies';
 import CircularThumbnail from '../../components/homePage/CircularThumbnail';
 import RectangularThumbnail from '../../components/homePage/RectangularThumbnail';
+import MoviesListBar from '../../components/homePage/MoviesListBar';
+import { Row } from '../../components/elements/Row';
 import Image from 'next/image';
+import { useRecoilState } from 'recoil';
+import {
+  nowPlyingMoviesState,
+  popularMoviesState,
+  topRatedMoviesState,
+  upComingMoviesState,
+} from '../../states/homeState';
+import { Column } from '../../components/elements/Column';
 
 const HomePage = ({ nowPlayingData, topRatedData, popularData, upComingData }: any) => {
-  console.log(nowPlayingData);
-  console.log(topRatedData);
-  console.log(popularData);
-  console.log(upComingData);
+  const [nowPlayingMovies, setNowPlayingMovies] = useRecoilState(nowPlyingMoviesState);
+  const [topRatedMovies, setTopRatedMovies] = useRecoilState(topRatedMoviesState);
+  const [popularMovies, setPopularMovies] = useRecoilState(popularMoviesState);
+  const [upComingMovies, setUpComingMovies] = useRecoilState(upComingMoviesState);
 
-  const onClick = () => {
-    console.log('hi');
-  };
+  setNowPlayingMovies(nowPlayingData.results);
+  setTopRatedMovies(topRatedData.results);
+  setPopularMovies(popularData.results);
+  setUpComingMovies(upComingData.results);
 
-  const url = upComingData.results[0].backdrop_path;
+  // 나중에 없애기. 확인하면서 작업하는 용도
+  console.log(nowPlayingData.results);
+  console.log(topRatedData.results);
+  console.log(popularData.results);
+  console.log(upComingData.results);
 
   return (
     <HomePageContainer>
       <Navigation />
-      <h1>HomePage</h1>
-      <CircularThumbnail onClick={onClick} imageSrc={`https://image.tmdb.org/t/p/original${url}`} />
-      <RectangularThumbnail />
+      <Column gap="22px">
+        <MoviesListBar title="Previews" gap="23px">
+          {upComingMovies.map((movie) => {
+            const imagePath = movie.backdrop_path;
+            return (
+              <CircularThumbnail
+                key={movie.id}
+                id={movie.id}
+                imageSrc={`https://image.tmdb.org/t/p/original${imagePath}`}
+              />
+            );
+          })}
+        </MoviesListBar>
+        <MoviesListBar title="Now Playing" gap="14px" marginTop="6px">
+          {nowPlayingMovies.map((movie) => {
+            const imagePath = movie.backdrop_path;
+            return (
+              <RectangularThumbnail
+                key={movie.id}
+                id={movie.id}
+                imageSrc={`https://image.tmdb.org/t/p/original${imagePath}`}
+              />
+            );
+          })}
+        </MoviesListBar>
+        <MoviesListBar title="Top Rated" gap="14px">
+          {topRatedMovies.map((movie) => {
+            const imagePath = movie.backdrop_path;
+            return (
+              <RectangularThumbnail
+                key={movie.id}
+                id={movie.id}
+                imageSrc={`https://image.tmdb.org/t/p/original${imagePath}`}
+              />
+            );
+          })}
+        </MoviesListBar>
+        <MoviesListBar title="Popular" gap="14px">
+          {popularMovies.map((movie) => {
+            const imagePath = movie.backdrop_path;
+            return (
+              <RectangularThumbnail
+                key={movie.id}
+                id={movie.id}
+                imageSrc={`https://image.tmdb.org/t/p/original${imagePath}`}
+              />
+            );
+          })}
+        </MoviesListBar>
+      </Column>
+
       <Footer />
     </HomePageContainer>
   );
@@ -37,7 +100,8 @@ const HomePageContainer = styled.div`
 
   display: flex;
   flex-direction: column;
-  align-items: center;
+  /* overflow-x: scroll; */
+  /* align-items: center; */
 `;
 
 export async function getServerSideProps() {
