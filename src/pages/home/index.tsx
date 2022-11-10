@@ -1,30 +1,28 @@
-import styled from "styled-components";
-import {
-  getNowPlaying,
-  getTopRated,
-  getPopular,
-  getUpcoming,
-} from "../../api/getMovies";
-import Footer from "../../components/elements/Footer";
-import Navigation from "../../components/elements/Navigation";
-import CircularThumbnail from "../../components/homePage/CircularThumbnail";
-import RectangularThumbnail from "../../components/homePage/RectangularThumbnail";
+import styled from 'styled-components';
+import Footer from '../../components/elements/Footer';
+import Navigation from '../../components/elements/Navigation';
+import { getNowPlaying, getTopRated, getPopular, getUpcoming } from '../../api/getMovies';
+import CircularThumbnail from '../../components/homePage/CircularThumbnail';
+import RectangularThumbnail from '../../components/homePage/RectangularThumbnail';
+import Image from 'next/image';
 
-const HomePage = ({
-  nowPlayingData,
-  topRatedData,
-  popularData,
-  upComingData,
-}: any) => {
+const HomePage = ({ nowPlayingData, topRatedData, popularData, upComingData }: any) => {
   console.log(nowPlayingData);
   console.log(topRatedData);
   console.log(popularData);
   console.log(upComingData);
 
+  const onClick = () => {
+    console.log('hi');
+  };
+
+  const url = upComingData.results[0].backdrop_path;
+
   return (
     <HomePageContainer>
       <Navigation />
-      <CircularThumbnail />
+      <h1>HomePage</h1>
+      <CircularThumbnail onClick={onClick} imageSrc={`https://image.tmdb.org/t/p/original${url}`} />
       <RectangularThumbnail />
       <Footer />
     </HomePageContainer>
