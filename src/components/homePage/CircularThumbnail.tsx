@@ -19,7 +19,6 @@ const Wrapper = styled.button`
   width: 102px;
   height: 102px;
   border-radius: 50%;
-  background-color: white;
   overflow: hidden;
   border: none;
 
