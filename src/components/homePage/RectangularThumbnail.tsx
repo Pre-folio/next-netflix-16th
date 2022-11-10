@@ -1,4 +1,5 @@
-import styled from "styled-components";
+import styled from 'styled-components';
+import { IThumbnailProps } from '../../interfaces/interface';
 
 const RectangularThumbnail = () => {
   return <Wrapper>s</Wrapper>;
