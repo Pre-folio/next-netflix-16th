@@ -9,6 +9,6 @@ export interface IWrapperProps {
   justifyContent?: string;
   alignItems?: string;
   gap?: string;
-  marginBottom: string;
-  marginTop: string;
+  marginBottom?: string;
+  marginTop?: string;
 }
