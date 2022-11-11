@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const Navigation = () => (
   <Wrapper>
@@ -39,4 +39,5 @@ const NavItem = styled.div`
   font-size: 17.2px;
   font-weight: 400;
   color: #ffffff;
+  cursor: pointer;
 `;
