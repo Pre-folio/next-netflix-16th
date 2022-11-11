@@ -28,6 +28,7 @@ const Wrapper = styled.div`
   padding-left: 12px;
   color: white;
   font-size: 26px;
+  font-weight: 700;
   overflow-x: scroll;
   /* background-color: white; */
 `;
@@ -36,4 +37,5 @@ const ContentWrapper = styled.div`
   display: flex;
   gap: 7px;
   overflow-x: scroll;
+  margin-top: 23px;
 `;
