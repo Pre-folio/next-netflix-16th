@@ -4,7 +4,7 @@ import styled from 'styled-components';
 export const Column = styled.div.attrs<IWrapperProps>((props) => ({
   marginTop: props.marginTop || 0,
   marginBottom: props.marginBottom || 0,
-  justifyContent: props.justifyContent || 'center',
+  justifyContent: props.justifyContent || '',
   alignItems: props.alignItems || 'flex-start',
   gap: props.gap || 0,
 }))<IWrapperProps>`
