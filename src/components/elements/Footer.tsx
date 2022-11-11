@@ -1,29 +1,34 @@
+import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
+import { isClickedState } from '../../states/footerState';
 
-const Footer = () => (
-  <Wrapper>
-    <ItemWrapper>
-      <FooterImg src="/images/footer/home.svg" />
-      <FooterItem>Home</FooterItem>
-    </ItemWrapper>
-    <ItemWrapper>
-      <FooterImg src="/images/footer/search.svg" />
-      <FooterItem>Search</FooterItem>
-    </ItemWrapper>
-    <ItemWrapper>
-      <FooterImg src="/images/footer/comming-soon.svg" />
-      <FooterItem>Comming Soon</FooterItem>
-    </ItemWrapper>
-    <ItemWrapper>
-      <FooterImg src="/images/footer/Downloads.svg" />
-      <FooterItem>Downloads</FooterItem>
-    </ItemWrapper>
-    <ItemWrapper>
-      <FooterImg src="/images/footer/More.svg" />
-      <FooterItem>More</FooterItem>
-    </ItemWrapper>
-  </Wrapper>
-);
+const Footer = () => {
+  const [isClicked, setIsClicked] = useRecoilState(isClickedState);
+  return (
+    <Wrapper>
+      <ItemWrapper>
+        <FooterImg src="/images/footer/home.svg" />
+        <FooterItem>Home</FooterItem>
+      </ItemWrapper>
+      <ItemWrapper>
+        <FooterImg src="/images/footer/search.svg" />
+        <FooterItem>Search</FooterItem>
+      </ItemWrapper>
+      <ItemWrapper>
+        <FooterImg src="/images/footer/comming-soon.svg" />
+        <FooterItem>Comming Soon</FooterItem>
+      </ItemWrapper>
+      <ItemWrapper>
+        <FooterImg src="/images/footer/Downloads.svg" />
+        <FooterItem>Downloads</FooterItem>
+      </ItemWrapper>
+      <ItemWrapper>
+        <FooterImg src="/images/footer/More.svg" />
+        <FooterItem>More</FooterItem>
+      </ItemWrapper>
+    </Wrapper>
+  );
+};
 
 export default Footer;
 

@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled, { css } from 'styled-components';
 
 const PlayBar = () => {
   return (
@@ -8,7 +8,7 @@ const PlayBar = () => {
           <PlayBarImg src="/images/home/my-list.svg" />
           <PlayBarItem>My List</PlayBarItem>
         </ItemWrapper>
-        <PlayButton>
+        <PlayButton width="110.62px">
           <PlayBarImg src="/images/home/play-button.svg" isButton={true} />
           <PlayBarItem isButton={true}>Play</PlayBarItem>
         </PlayButton>
@@ -41,8 +41,8 @@ const ButtonWrapper = styled.div`
   align-items: center;
 `;
 
-const PlayButton = styled.button`
-  width: 110.62px;
+const PlayButton = styled.button<{ width: string }>`
+  width: ${(props) => props.width};
   height: 45px;
 
   border: 0;
