@@ -12,10 +12,10 @@ const Navigation = () => (
 export default Navigation;
 
 const Wrapper = styled.nav`
-  position: relative;
+  position: absolute;
   top: 0;
 
-  z-index: 2;
+  z-index: 1;
 
   margin: 24px 16px 24px 16px;
 
