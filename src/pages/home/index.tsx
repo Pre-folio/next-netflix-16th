@@ -28,6 +28,7 @@ const HomePage = ({
   topRatedData,
   popularData,
   upComingData,
+  backgroundData,
 }: any) => {
   const [nowPlayingMovies, setNowPlayingMovies] =
     useRecoilState(nowPlyingMoviesState);
@@ -48,64 +49,70 @@ const HomePage = ({
   console.log(popularData.results);
   console.log(upComingData.results);
 
+  const randomNowPlaying =
+    nowPlayingData.results[
+      Math.floor(Math.random() * nowPlayingData.results.length)
+    ];
+
   return (
     <HomePageContainer>
-      <Wrapper>
-        <Navigation />
-        <BackgroundImage />
-        <PlayBar />
+      <Navigation />
+      <BackgroundImage
+        id={randomNowPlaying.id}
+        imageSrc={`https://image.tmdb.org/t/p/original${randomNowPlaying.backdrop_path}`}
+      />
+      <PlayBar />
 
-        <Column gap="22px">
-          <MoviesListBar title="Previews" gap="23px">
-            {upComingMovies.map((movie) => {
-              const imagePath = movie.backdrop_path;
-              return (
-                <CircularThumbnail
-                  key={movie.id}
-                  id={movie.id}
-                  imageSrc={`https://image.tmdb.org/t/p/original${imagePath}`}
-                />
-              );
-            })}
-          </MoviesListBar>
-          <MoviesListBar title="Now Playing" gap="14px" marginTop="6px">
-            {nowPlayingMovies.map((movie) => {
-              const imagePath = movie.backdrop_path;
-              return (
-                <RectangularThumbnail
-                  key={movie.id}
-                  id={movie.id}
-                  imageSrc={`https://image.tmdb.org/t/p/original${imagePath}`}
-                />
-              );
-            })}
-          </MoviesListBar>
-          <MoviesListBar title="Top Rated" gap="14px">
-            {topRatedMovies.map((movie) => {
-              const imagePath = movie.backdrop_path;
-              return (
-                <RectangularThumbnail
-                  key={movie.id}
-                  id={movie.id}
-                  imageSrc={`https://image.tmdb.org/t/p/original${imagePath}`}
-                />
-              );
-            })}
-          </MoviesListBar>
-          <MoviesListBar title="Popular" gap="14px">
-            {popularMovies.map((movie) => {
-              const imagePath = movie.backdrop_path;
-              return (
-                <RectangularThumbnail
-                  key={movie.id}
-                  id={movie.id}
-                  imageSrc={`https://image.tmdb.org/t/p/original${imagePath}`}
-                />
-              );
-            })}
-          </MoviesListBar>
-        </Column>
-      </Wrapper>
+      <Column gap="22px">
+        <MoviesListBar title="Previews" gap="23px">
+          {upComingMovies.map((movie) => {
+            const imagePath = movie.backdrop_path;
+            return (
+              <CircularThumbnail
+                key={movie.id}
+                id={movie.id}
+                imageSrc={`https://image.tmdb.org/t/p/original${imagePath}`}
+              />
+            );
+          })}
+        </MoviesListBar>
+        <MoviesListBar title="Now Playing" gap="14px" marginTop="6px">
+          {nowPlayingMovies.map((movie) => {
+            const imagePath = movie.backdrop_path;
+            return (
+              <RectangularThumbnail
+                key={movie.id}
+                id={movie.id}
+                imageSrc={`https://image.tmdb.org/t/p/original${imagePath}`}
+              />
+            );
+          })}
+        </MoviesListBar>
+        <MoviesListBar title="Top Rated" gap="14px">
+          {topRatedMovies.map((movie) => {
+            const imagePath = movie.backdrop_path;
+            return (
+              <RectangularThumbnail
+                key={movie.id}
+                id={movie.id}
+                imageSrc={`https://image.tmdb.org/t/p/original${imagePath}`}
+              />
+            );
+          })}
+        </MoviesListBar>
+        <MoviesListBar title="Popular" gap="14px">
+          {popularMovies.map((movie) => {
+            const imagePath = movie.backdrop_path;
+            return (
+              <RectangularThumbnail
+                key={movie.id}
+                id={movie.id}
+                imageSrc={`https://image.tmdb.org/t/p/original${imagePath}`}
+              />
+            );
+          })}
+        </MoviesListBar>
+      </Column>
 
       <Footer />
     </HomePageContainer>
@@ -137,5 +144,12 @@ export async function getServerSideProps() {
   const popularData = await getPopular();
   const upComingData = await getUpcoming();
 
-  return { props: { nowPlayingData, topRatedData, popularData, upComingData } };
+  return {
+    props: {
+      nowPlayingData,
+      topRatedData,
+      popularData,
+      upComingData,
+    },
+  };
 }

@@ -1,7 +1,7 @@
-import styled from 'styled-components';
-import { IThumbnailProps } from '../../interfaces/interface';
-import Link from 'next/link';
-import Image from 'next/image';
+import styled from "styled-components";
+import { IThumbnailProps } from "../../interfaces/interface";
+import Link from "next/link";
+import Image from "next/image";
 
 const CircularThumbnail = ({ imageSrc, id }: IThumbnailProps) => {
   return (
@@ -21,6 +21,7 @@ const Wrapper = styled.button`
   border-radius: 50%;
   overflow: hidden;
   border: none;
+  padding: 0;
 
   cursor: pointer;
 
