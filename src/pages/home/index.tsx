@@ -1,28 +1,42 @@
-import styled from 'styled-components';
-import Footer from '../../components/elements/Footer';
-import Navigation from '../../components/elements/Navigation';
-import { getNowPlaying, getTopRated, getPopular, getUpcoming } from '../../api/getMovies';
-import CircularThumbnail from '../../components/homePage/CircularThumbnail';
-import RectangularThumbnail from '../../components/homePage/RectangularThumbnail';
-import MoviesListBar from '../../components/homePage/MoviesListBar';
-import { Row } from '../../components/elements/Row';
-import Image from 'next/image';
-import { useRecoilState } from 'recoil';
+import styled from "styled-components";
+import Footer from "../../components/elements/Footer";
+import Navigation from "../../components/elements/Navigation";
+import {
+  getNowPlaying,
+  getTopRated,
+  getPopular,
+  getUpcoming,
+} from "../../api/getMovies";
+import CircularThumbnail from "../../components/homePage/CircularThumbnail";
+import RectangularThumbnail from "../../components/homePage/RectangularThumbnail";
+import MoviesListBar from "../../components/homePage/MoviesListBar";
+import { Row } from "../../components/elements/Row";
+import Image from "next/image";
+import { useRecoilState } from "recoil";
 import {
   nowPlyingMoviesState,
   popularMoviesState,
   topRatedMoviesState,
   upComingMoviesState,
-} from '../../states/homeState';
-import { Column } from '../../components/elements/Column';
-import BackgroundImage from '../../components/homePage/BackgroundImage';
-import PlayBar from '../../components/homePage/PlayBar';
+} from "../../states/homeState";
+import { Column } from "../../components/elements/Column";
+import BackgroundImage from "../../components/homePage/BackgroundImage";
+import PlayBar from "../../components/homePage/PlayBar";
 
-const HomePage = ({ nowPlayingData, topRatedData, popularData, upComingData, backgroundData }: any) => {
-  const [nowPlayingMovies, setNowPlayingMovies] = useRecoilState(nowPlyingMoviesState);
-  const [topRatedMovies, setTopRatedMovies] = useRecoilState(topRatedMoviesState);
+const HomePage = ({
+  nowPlayingData,
+  topRatedData,
+  popularData,
+  upComingData,
+  backgroundData,
+}: any) => {
+  const [nowPlayingMovies, setNowPlayingMovies] =
+    useRecoilState(nowPlyingMoviesState);
+  const [topRatedMovies, setTopRatedMovies] =
+    useRecoilState(topRatedMoviesState);
   const [popularMovies, setPopularMovies] = useRecoilState(popularMoviesState);
-  const [upComingMovies, setUpComingMovies] = useRecoilState(upComingMoviesState);
+  const [upComingMovies, setUpComingMovies] =
+    useRecoilState(upComingMoviesState);
 
   setNowPlayingMovies(nowPlayingData.results);
   setTopRatedMovies(topRatedData.results);
@@ -35,7 +49,10 @@ const HomePage = ({ nowPlayingData, topRatedData, popularData, upComingData, bac
   console.log(popularData.results);
   console.log(upComingData.results);
 
-  const randomNowPlaying = nowPlayingData.results[Math.floor(Math.random() * nowPlayingData.results.length)];
+  const randomNowPlaying =
+    nowPlayingData.results[
+      Math.floor(Math.random() * nowPlayingData.results.length)
+    ];
 
   return (
     <HomePageContainer>

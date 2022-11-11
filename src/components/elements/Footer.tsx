@@ -1,29 +1,70 @@
-import { useRecoilState } from 'recoil';
-import styled from 'styled-components';
-import { isClickedState } from '../../states/footerState';
+import { useRouter } from "next/router";
+import React, { useState } from "react";
+import { useRecoilState } from "recoil";
+import styled from "styled-components";
+import CommingSoonIcon from "../icons/CommingSoonIcon";
+import DownloadsIcon from "../icons/DownloadsIcon";
+import HomeIcon from "../icons/HomeIcon";
+import MoreIcon from "../icons/More";
+import SearchIcon from "../icons/SearchIcon";
 
 const Footer = () => {
-  const [isClicked, setIsClicked] = useRecoilState(isClickedState);
+  const [path, setPath] = useState("home");
+  const [selectedIcon, setSelectedIcon] = useState("home");
+  const router = useRouter();
+  console.log(router.pathname);
+
+  const handleOnClick = (e: any) => {
+    // if (e.currentTarget.name === "home") {
+    //   router.push("/home");
+    //   setPath("home");
+    // } else if (e.currentTarget.name === "search") {
+    //   router.push("/search");
+    //   setPath("search");
+    // }
+    setSelectedIcon(e.currentTarget.name);
+  };
+
   return (
     <Wrapper>
       <ItemWrapper>
-        <FooterImg src="/images/footer/home.svg" />
+        <HomeIcon
+          path={path}
+          onClick={handleOnClick}
+          isSelected={selectedIcon === "home"}
+        />
         <FooterItem>Home</FooterItem>
       </ItemWrapper>
       <ItemWrapper>
-        <FooterImg src="/images/footer/search.svg" />
+        <SearchIcon
+          path={path}
+          onClick={handleOnClick}
+          isSelected={selectedIcon === "search"}
+        />
         <FooterItem>Search</FooterItem>
       </ItemWrapper>
       <ItemWrapper>
-        <FooterImg src="/images/footer/comming-soon.svg" />
+        <CommingSoonIcon
+          path={path}
+          onClick={handleOnClick}
+          isSelected={selectedIcon === "comming-soon"}
+        />
         <FooterItem>Comming Soon</FooterItem>
       </ItemWrapper>
       <ItemWrapper>
-        <FooterImg src="/images/footer/Downloads.svg" />
+        <DownloadsIcon
+          path={path}
+          onClick={handleOnClick}
+          isSelected={selectedIcon === "downloads"}
+        />
         <FooterItem>Downloads</FooterItem>
       </ItemWrapper>
       <ItemWrapper>
-        <FooterImg src="/images/footer/More.svg" />
+        <MoreIcon
+          path={path}
+          onClick={handleOnClick}
+          isSelected={selectedIcon === "more"}
+        />
         <FooterItem>More</FooterItem>
       </ItemWrapper>
     </Wrapper>
