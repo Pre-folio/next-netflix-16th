@@ -46,7 +46,7 @@ const HomePage = ({ nowPlayingData, topRatedData, popularData, upComingData, bac
       />
       <PlayBar />
 
-      <Column gap="22px">
+      <Column gap="22px" marginTop="43px">
         <MoviesListBar title="Previews" gap="23px">
           {upComingMovies.map((movie) => {
             const imagePath = movie.backdrop_path;
@@ -95,9 +95,8 @@ const HomePage = ({ nowPlayingData, topRatedData, popularData, upComingData, bac
             );
           })}
         </MoviesListBar>
+        <Footer />
       </Column>
-
-      <Footer />
     </HomePageContainer>
   );
 };
@@ -106,10 +105,11 @@ export default HomePage;
 
 const HomePageContainer = styled.div`
   width: 375px;
-  height: 100%;
+  height: auto;
 
   display: flex;
   flex-direction: column;
+  padding-bottom: 60px;
 
   /* overflow-x: scroll; */
   /* align-items: center; */

@@ -1,6 +1,6 @@
-import Link from "next/link";
-import styled from "styled-components";
-import { IThumbnailProps } from "../../interfaces/interface";
+import Link from 'next/link';
+import styled from 'styled-components';
+import { IThumbnailProps } from '../../interfaces/interface';
 
 const RectangularThumbnail = ({ imageSrc, id }: IThumbnailProps) => {
   return (
@@ -20,6 +20,7 @@ const Wrapper = styled.button`
   overflow: hidden;
   border: none;
   padding: 0;
+  border-radius: 2px;
 
   cursor: pointer;
 
