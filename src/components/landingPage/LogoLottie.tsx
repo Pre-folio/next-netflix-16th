@@ -1,22 +1,22 @@
-import { useRouter } from 'next/router';
-import lottie from '../../../public/images/logo-lottie.json';
-import Lottie from 'react-lottie';
-import styled from 'styled-components';
+import { useRouter } from "next/router";
+import lottie from "../../../public/images/logo-lottie.json";
+import Lottie from "react-lottie";
+import styled from "styled-components";
 
 const LogoLottie = () => {
   const router = useRouter();
 
   const defaultOptions = {
-    loop: true,
+    loop: false,
     autoplay: true,
     animationData: lottie,
     rendererSettings: {
-      preserveAspectRatio: 'xMidYMid slice',
+      preserveAspectRatio: "xMidYMid slice",
     },
   };
 
   const homeRouter = setTimeout(() => {
-    router.push('/home');
+    router.push("/home");
   }, 4000);
 
   return (
