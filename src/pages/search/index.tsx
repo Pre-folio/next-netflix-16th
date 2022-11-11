@@ -1,5 +1,11 @@
+import Footer from "../../components/elements/Footer";
+
 const SearchPage = () => {
-  return <h1>SearchPage</h1>;
+  return (
+    <div>
+      <Footer />
+    </div>
+  );
 };
 
 export default SearchPage;
