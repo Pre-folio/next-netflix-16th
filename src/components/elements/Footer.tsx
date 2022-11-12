@@ -1,70 +1,44 @@
-import { useRouter } from "next/router";
-import React, { useState } from "react";
-import { useRecoilState } from "recoil";
-import styled from "styled-components";
-import CommingSoonIcon from "../icons/CommingSoonIcon";
-import DownloadsIcon from "../icons/DownloadsIcon";
-import HomeIcon from "../icons/HomeIcon";
-import MoreIcon from "../icons/More";
-import SearchIcon from "../icons/SearchIcon";
+import { useRouter } from 'next/router';
+import React from 'react';
+import { useRecoilState } from 'recoil';
+import styled from 'styled-components';
+import { selectedContentState } from '../../states/footerState';
+import CommingSoonIcon from '../icons/CommingSoonIcon';
+import DownloadsIcon from '../icons/DownloadsIcon';
+import HomeIcon from '../icons/HomeIcon';
+import MoreIcon from '../icons/More';
+import SearchIcon from '../icons/SearchIcon';
 
 const Footer = () => {
-  const [path, setPath] = useState("home");
-  const [selectedIcon, setSelectedIcon] = useState("home");
+  const [selectedIcon, setSelectedIcon] = useRecoilState(selectedContentState);
   const router = useRouter();
-  console.log(router.pathname);
 
-  const handleOnClick = (e: any) => {
-    // if (e.currentTarget.name === "home") {
-    //   router.push("/home");
-    //   setPath("home");
-    // } else if (e.currentTarget.name === "search") {
-    //   router.push("/search");
-    //   setPath("search");
-    // }
-    setSelectedIcon(e.currentTarget.name);
+  const handleOnClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const selectedContent = e.currentTarget.name;
+    setSelectedIcon(selectedContent);
+    router.push(`/${selectedContent}`);
   };
 
   return (
     <Wrapper>
       <ItemWrapper>
-        <HomeIcon
-          path={path}
-          onClick={handleOnClick}
-          isSelected={selectedIcon === "home"}
-        />
+        <HomeIcon onClick={handleOnClick} isSelected={selectedIcon === 'home'} />
         <FooterItem>Home</FooterItem>
       </ItemWrapper>
       <ItemWrapper>
-        <SearchIcon
-          path={path}
-          onClick={handleOnClick}
-          isSelected={selectedIcon === "search"}
-        />
+        <SearchIcon onClick={handleOnClick} isSelected={selectedIcon === 'search'} />
         <FooterItem>Search</FooterItem>
       </ItemWrapper>
       <ItemWrapper>
-        <CommingSoonIcon
-          path={path}
-          onClick={handleOnClick}
-          isSelected={selectedIcon === "comming-soon"}
-        />
+        <CommingSoonIcon onClick={handleOnClick} isSelected={selectedIcon === 'comming-soon'} />
         <FooterItem>Comming Soon</FooterItem>
       </ItemWrapper>
       <ItemWrapper>
-        <DownloadsIcon
-          path={path}
-          onClick={handleOnClick}
-          isSelected={selectedIcon === "downloads"}
-        />
+        <DownloadsIcon onClick={handleOnClick} isSelected={selectedIcon === 'downloads'} />
         <FooterItem>Downloads</FooterItem>
       </ItemWrapper>
       <ItemWrapper>
-        <MoreIcon
-          path={path}
-          onClick={handleOnClick}
-          isSelected={selectedIcon === "more"}
-        />
+        <MoreIcon onClick={handleOnClick} isSelected={selectedIcon === 'more'} />
         <FooterItem>More</FooterItem>
       </ItemWrapper>
     </Wrapper>

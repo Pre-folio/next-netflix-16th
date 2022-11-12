@@ -3,11 +3,6 @@ import styled from 'styled-components';
 import { SvgWrapper } from './icons.styled';
 
 const HomeIcon = ({ path, onClick, isSelected }: any) => {
-  // const [isSelected, setIsSelected] = useState(false);
-  // useEffect(() => {
-  //   setIsSelected(path === "home");
-  // }, [path]);
-
   return (
     <SvgWrapper name="home" onClick={onClick}>
       <svg
