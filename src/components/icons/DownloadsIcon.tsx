@@ -1,7 +1,8 @@
 import React from 'react';
+import { IFooterIconProps } from '../../interfaces/interface';
 import { SvgWrapper } from './icons.styled';
 
-const DownloadsIcon = ({ onClick, isSelected }: any) => {
+const DownloadsIcon = ({ onClick, isSelected }: IFooterIconProps) => {
   return (
     <SvgWrapper name="downloads" onClick={onClick}>
       <svg
