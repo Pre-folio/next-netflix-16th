@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
+import React from 'react';
 import { SvgWrapper } from './icons.styled';
 
-const SearchIcon = ({ path, onClick, isSelected }: any) => {
+const SearchIcon = ({ onClick, isSelected }: any) => {
   return (
     <SvgWrapper name="search" onClick={onClick}>
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

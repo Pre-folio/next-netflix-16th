@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
+import React from 'react';
 import { SvgWrapper } from './icons.styled';
 
-const CommingSoonIcon = ({ path, onClick, isSelected }: any) => {
+const CommingSoonIcon = ({ onClick, isSelected }: any) => {
   return (
     <SvgWrapper name="comming-soon" onClick={onClick}>
       <svg

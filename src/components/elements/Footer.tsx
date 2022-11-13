@@ -23,23 +23,23 @@ const Footer = () => {
     <Wrapper>
       <ItemWrapper>
         <HomeIcon onClick={handleOnClick} isSelected={selectedIcon === 'home'} />
-        <FooterItem>Home</FooterItem>
+        <FooterItem isSelected={selectedIcon === 'home'}>Home</FooterItem>
       </ItemWrapper>
       <ItemWrapper>
         <SearchIcon onClick={handleOnClick} isSelected={selectedIcon === 'search'} />
-        <FooterItem>Search</FooterItem>
+        <FooterItem isSelected={selectedIcon === 'search'}>Search</FooterItem>
       </ItemWrapper>
       <ItemWrapper>
         <CommingSoonIcon onClick={handleOnClick} isSelected={selectedIcon === 'comming-soon'} />
-        <FooterItem>Comming Soon</FooterItem>
+        <FooterItem isSelected={selectedIcon === 'comming-soon'}>Comming Soon</FooterItem>
       </ItemWrapper>
       <ItemWrapper>
         <DownloadsIcon onClick={handleOnClick} isSelected={selectedIcon === 'downloads'} />
-        <FooterItem>Downloads</FooterItem>
+        <FooterItem isSelected={selectedIcon === 'downloads'}>Downloads</FooterItem>
       </ItemWrapper>
       <ItemWrapper>
         <MoreIcon onClick={handleOnClick} isSelected={selectedIcon === 'more'} />
-        <FooterItem>More</FooterItem>
+        <FooterItem isSelected={selectedIcon === 'more'}>More</FooterItem>
       </ItemWrapper>
     </Wrapper>
   );
@@ -77,12 +77,12 @@ const FooterImg = styled.img`
   height: 24px;
 `;
 
-const FooterItem = styled.div`
+const FooterItem = styled.div<{ isSelected: boolean }>`
   font-size: 8px;
   font-weight: 500;
   letter-spacing: 0.26px;
   text-align: center;
-  color: #ffffff;
+  color: ${(props) => (props.isSelected ? '#ffffff' : '#8C8787')};
 
   margin-top: 3px;
 `;
