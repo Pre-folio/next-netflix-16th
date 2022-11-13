@@ -27,3 +27,8 @@ export interface IWrapperProps {
   marginBottom?: string;
   marginTop?: string;
 }
+
+export interface IFooterIconProps {
+  onClick: React.MouseEventHandler<HTMLButtonElement>;
+  isSelected: boolean;
+}

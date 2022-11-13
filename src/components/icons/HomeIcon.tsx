@@ -1,13 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
+import React from 'react';
+import { IFooterIconProps } from '../../interfaces/interface';
 import { SvgWrapper } from './icons.styled';
 
-const HomeIcon = ({ path, onClick, isSelected }: any) => {
-  // const [isSelected, setIsSelected] = useState(false);
-  // useEffect(() => {
-  //   setIsSelected(path === "home");
-  // }, [path]);
-
+const HomeIcon = ({ onClick, isSelected }: IFooterIconProps) => {
   return (
     <SvgWrapper name="home" onClick={onClick}>
       <svg

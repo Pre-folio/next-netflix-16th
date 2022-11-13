@@ -1,71 +1,45 @@
-import { useRouter } from "next/router";
-import React, { useState } from "react";
-import { useRecoilState } from "recoil";
-import styled from "styled-components";
-import CommingSoonIcon from "../icons/CommingSoonIcon";
-import DownloadsIcon from "../icons/DownloadsIcon";
-import HomeIcon from "../icons/HomeIcon";
-import MoreIcon from "../icons/More";
-import SearchIcon from "../icons/SearchIcon";
+import { useRouter } from 'next/router';
+import React from 'react';
+import { useRecoilState } from 'recoil';
+import styled from 'styled-components';
+import { selectedContentState } from '../../states/footerState';
+import CommingSoonIcon from '../icons/CommingSoonIcon';
+import DownloadsIcon from '../icons/DownloadsIcon';
+import HomeIcon from '../icons/HomeIcon';
+import MoreIcon from '../icons/More';
+import SearchIcon from '../icons/SearchIcon';
 
 const Footer = () => {
-  const [path, setPath] = useState("home");
-  const [selectedIcon, setSelectedIcon] = useState("home");
+  const [selectedIcon, setSelectedIcon] = useRecoilState(selectedContentState);
   const router = useRouter();
-  console.log(router.pathname);
 
-  const handleOnClick = (e: any) => {
-    // if (e.currentTarget.name === "home") {
-    //   router.push("/home");
-    //   setPath("home");
-    // } else if (e.currentTarget.name === "search") {
-    //   router.push("/search");
-    //   setPath("search");
-    // }
-    setSelectedIcon(e.currentTarget.name);
+  const handleOnClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const selectedContent = e.currentTarget.name;
+    setSelectedIcon(selectedContent);
+    router.push(`/${selectedContent}`);
   };
 
   return (
     <Wrapper>
       <ItemWrapper>
-        <HomeIcon
-          path={path}
-          onClick={handleOnClick}
-          isSelected={selectedIcon === "home"}
-        />
-        <FooterItem>Home</FooterItem>
+        <HomeIcon onClick={handleOnClick} isSelected={selectedIcon === 'home'} />
+        <FooterItem isSelected={selectedIcon === 'home'}>Home</FooterItem>
       </ItemWrapper>
       <ItemWrapper>
-        <SearchIcon
-          path={path}
-          onClick={handleOnClick}
-          isSelected={selectedIcon === "search"}
-        />
-        <FooterItem>Search</FooterItem>
+        <SearchIcon onClick={handleOnClick} isSelected={selectedIcon === 'search'} />
+        <FooterItem isSelected={selectedIcon === 'search'}>Search</FooterItem>
       </ItemWrapper>
       <ItemWrapper>
-        <CommingSoonIcon
-          path={path}
-          onClick={handleOnClick}
-          isSelected={selectedIcon === "comming-soon"}
-        />
-        <FooterItem>Comming Soon</FooterItem>
+        <CommingSoonIcon onClick={handleOnClick} isSelected={selectedIcon === 'comming-soon'} />
+        <FooterItem isSelected={selectedIcon === 'comming-soon'}>Comming Soon</FooterItem>
       </ItemWrapper>
       <ItemWrapper>
-        <DownloadsIcon
-          path={path}
-          onClick={handleOnClick}
-          isSelected={selectedIcon === "downloads"}
-        />
-        <FooterItem>Downloads</FooterItem>
+        <DownloadsIcon onClick={handleOnClick} isSelected={selectedIcon === 'downloads'} />
+        <FooterItem isSelected={selectedIcon === 'downloads'}>Downloads</FooterItem>
       </ItemWrapper>
       <ItemWrapper>
-        <MoreIcon
-          path={path}
-          onClick={handleOnClick}
-          isSelected={selectedIcon === "more"}
-        />
-        <FooterItem>More</FooterItem>
+        <MoreIcon onClick={handleOnClick} isSelected={selectedIcon === 'more'} />
+        <FooterItem isSelected={selectedIcon === 'more'}>More</FooterItem>
       </ItemWrapper>
     </Wrapper>
   );
@@ -103,12 +77,12 @@ const FooterImg = styled.img`
   height: 24px;
 `;
 
-const FooterItem = styled.div`
+const FooterItem = styled.div<{ isSelected: boolean }>`
   font-size: 8px;
   font-weight: 500;
   letter-spacing: 0.26px;
   text-align: center;
-  color: #ffffff;
+  color: ${(props) => (props.isSelected ? '#ffffff' : '#8C8787')};
 
   margin-top: 3px;
 `;

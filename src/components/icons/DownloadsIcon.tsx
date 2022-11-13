@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
+import React from 'react';
 import { SvgWrapper } from './icons.styled';
 
-const DownloadsIcon = ({ path, onClick, isSelected }: any) => {
+const DownloadsIcon = ({ onClick, isSelected }: any) => {
   return (
     <SvgWrapper name="downloads" onClick={onClick}>
       <svg
