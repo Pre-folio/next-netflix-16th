@@ -2,9 +2,9 @@ import React from 'react';
 import { IFooterIconProps } from '../../interfaces/interface';
 import { SvgWrapper } from './icons.styled';
 
-const CommingSoonIcon = ({ onClick, isSelected }: IFooterIconProps) => {
+const ComingSoonIcon = ({ onClick, isSelected }: any) => {
   return (
-    <SvgWrapper name="comming-soon" onClick={onClick}>
+    <SvgWrapper name="coming-soon" onClick={onClick}>
       <svg
         width="20"
         height="20"
@@ -21,4 +21,4 @@ const CommingSoonIcon = ({ onClick, isSelected }: IFooterIconProps) => {
   );
 };
 
-export default CommingSoonIcon;
+export default ComingSoonIcon;
