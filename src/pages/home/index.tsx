@@ -5,8 +5,6 @@ import { getNowPlaying, getTopRated, getPopular, getUpcoming } from '../../api/g
 import CircularThumbnail from '../../components/homePage/CircularThumbnail';
 import RectangularThumbnail from '../../components/homePage/RectangularThumbnail';
 import MoviesListBar from '../../components/homePage/MoviesListBar';
-import { Row } from '../../components/elements/Row';
-import Image from 'next/image';
 import { useRecoilState } from 'recoil';
 import {
   nowPlyingMoviesState,
@@ -17,23 +15,27 @@ import {
 import { Column } from '../../components/elements/Column';
 import BackgroundImage from '../../components/homePage/BackgroundImage';
 import PlayBar from '../../components/homePage/PlayBar';
+import { selectedContentState } from '../../states/footerState';
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 
-const HomePage = ({ nowPlayingData, topRatedData, popularData, upComingData, backgroundData }: any) => {
+const HomePage = ({ nowPlayingData, topRatedData, popularData, upComingData }: any) => {
   const [nowPlayingMovies, setNowPlayingMovies] = useRecoilState(nowPlyingMoviesState);
   const [topRatedMovies, setTopRatedMovies] = useRecoilState(topRatedMoviesState);
   const [popularMovies, setPopularMovies] = useRecoilState(popularMoviesState);
   const [upComingMovies, setUpComingMovies] = useRecoilState(upComingMoviesState);
+  const [selectedIcon, setSelectedIcon] = useRecoilState(selectedContentState);
+  const router = useRouter();
+  const pageName = router.asPath.slice(1);
+
+  useEffect(() => {
+    setSelectedIcon(pageName);
+  }, []);
 
   setNowPlayingMovies(nowPlayingData.results);
   setTopRatedMovies(topRatedData.results);
   setPopularMovies(popularData.results);
   setUpComingMovies(upComingData.results);
-
-  // 나중에 없애기. 확인하면서 작업하는 용도
-  console.log(nowPlayingData.results);
-  console.log(topRatedData.results);
-  console.log(popularData.results);
-  console.log(upComingData.results);
 
   const randomNowPlaying = nowPlayingData.results[Math.floor(Math.random() * nowPlayingData.results.length)];
 
@@ -104,21 +106,12 @@ const HomePage = ({ nowPlayingData, topRatedData, popularData, upComingData, bac
 export default HomePage;
 
 const HomePageContainer = styled.div`
-  width: 375px;
+  /* width: 375px; */
   height: auto;
 
   display: flex;
   flex-direction: column;
   padding-bottom: 60px;
-
-  /* overflow-x: scroll; */
-  /* align-items: center; */
-`;
-
-const Wrapper = styled.div`
-  overflow-y: auto;
-  /* overflow-x: scroll; */
-  /* align-items: center; */
 `;
 
 export async function getServerSideProps() {
