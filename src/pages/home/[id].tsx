@@ -7,11 +7,13 @@ import { DetailPageProps } from '../../interfaces/interface';
 const DetailPage = ({ title, description }: DetailPageProps) => {
   return (
     <Container>
-      <ContentImage />
-      <PlayButton width="303px" />
+      <ContentWrapper>
+        <ContentImage />
+        <PlayButton width="303px" marginTop="13px" />
+      </ContentWrapper>
       <TextWrapper>
-        <div>{title} title</div>
-        <div style={{ padding: '0px 20px' }}>{description} description</div>
+        <div className="detail-title">{title} title</div>
+        <div className="detail-description">{description} description</div>
       </TextWrapper>
       <Footer />
     </Container>
@@ -22,12 +24,16 @@ export default DetailPage;
 
 const Container = styled.div`
   width: 375px;
-  /* height: auto; */
+  padding-bottom: 60px;
+`;
+
+const ContentWrapper = styled.div`
+  width: 375px;
+  height: auto;
 
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding-bottom: 60px;
+  align-items: center;
 `;
 
 const ContentImage = styled.img`
@@ -37,6 +43,13 @@ const ContentImage = styled.img`
 `;
 
 const TextWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
   padding: 32px;
   color: white;
+  gap: 24px;
+
+  & .detail-description {
+    opacity: 83%;
+  }
 `;

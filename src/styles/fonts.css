@@ -19,14 +19,11 @@
   font-style: normal;
 }
 
-.headline-1 {
-  font: normal normal 700 96px/168px SFProDisplay;
-  letter-spacing: -1.5px;
+.detail-title {
+  font: normal normal 700 26.75px/20px SFProDisplay;
+  letter-spacing: -0.07px;
 }
-.headline-2 {
-  font: normal normal 500 60px/104px SFProDisplay;
-  letter-spacing: -0.5px;
-}
-.headline-3 {
-  font: normal normal 400 48px/84px SFProDisplay;
+.detail-description {
+  font: normal normal 400 14px/14.17px SFProDisplay;
+  letter-spacing: -0.03px;
 }

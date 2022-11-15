@@ -2,12 +2,13 @@ import styled, { css } from 'styled-components';
 
 type ButtonType = {
   width: string;
+  marginTop: string;
 };
 
 //TODO any 타입 수정
-const PlayButton = ({ width }: ButtonType) => {
+const PlayButton = ({ width, marginTop }: ButtonType) => {
   return (
-    <PlayButtonWrapper width={width}>
+    <PlayButtonWrapper width={width} marginTop={marginTop}>
       <PlayBarImg src="/images/home/play-button.svg" isButton={true} />
       <PlayBarItem isButton={true}>Play</PlayBarItem>
     </PlayButtonWrapper>
@@ -16,7 +17,7 @@ const PlayButton = ({ width }: ButtonType) => {
 
 export default PlayButton;
 
-const PlayButtonWrapper = styled.button<{ width: string }>`
+const PlayButtonWrapper = styled.button<{ width: string; marginTop: string }>`
   width: ${(props) => props.width};
   height: 45px;
 
@@ -30,6 +31,7 @@ const PlayButtonWrapper = styled.button<{ width: string }>`
   align-items: center;
   justify-content: center;
   gap: 15px;
+  margin-top: ${(props) => props.marginTop};
 `;
 
 const PlayBarImg = styled.img<{ isButton?: boolean }>`
