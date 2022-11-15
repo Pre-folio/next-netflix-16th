@@ -6,6 +6,10 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
 
+  *:focus {
+    outline: 0;
+}
+
   body {
     font-family: 'SFProDisplay' !important;
     padding: 0;

@@ -40,3 +40,8 @@ export interface DetailPageProps {
   description?: string;
   poster_path?: string;
 }
+
+export interface SearchItemProps {
+  imageSrc: string;
+  title: string;
+}
