@@ -37,3 +37,8 @@ export interface DetailPageProps {
   title: string;
   description: string;
 }
+
+export interface SearchItemProps {
+  imageSrc: string;
+  title: string;
+}

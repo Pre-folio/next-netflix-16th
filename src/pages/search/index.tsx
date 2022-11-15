@@ -4,6 +4,8 @@ import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
 import { searchMovies } from '../../api/getMovies';
 import Footer from '../../components/elements/Footer';
+import SearchBox from '../../components/searchPage/SearchBox';
+import SearchList from '../../components/searchPage/SearchList';
 import { selectedContentState } from '../../states/footerState';
 import { searchedMoviesState } from '../../states/searchState';
 
@@ -23,6 +25,8 @@ const SearchPage = (searchedData: any) => {
 
   return (
     <SearchPageContainer>
+      <SearchBox />
+      <SearchList />
       <Footer />
     </SearchPageContainer>
   );
@@ -36,7 +40,6 @@ const SearchPageContainer = styled.div`
 
   display: flex;
   flex-direction: column;
-  padding-bottom: 60px;
 `;
 
 export async function getServerSideProps() {
