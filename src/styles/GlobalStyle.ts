@@ -37,6 +37,10 @@ const GlobalStyle = createGlobalStyle`
     text-decoration: none;
   }
 
+  img{
+    border: 0;
+  }
+
   ::-webkit-scrollbar {
     display: none;
   } 

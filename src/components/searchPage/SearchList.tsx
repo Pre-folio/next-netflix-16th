@@ -16,7 +16,7 @@ const SearchList = () => {
           <SearchItem
             key={movie.id}
             title={movie.original_title}
-            imageSrc={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
+            imageSrc={movie.backdrop_path}
           />
         );
       })}

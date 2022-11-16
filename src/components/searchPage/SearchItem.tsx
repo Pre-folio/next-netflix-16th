@@ -4,7 +4,12 @@ import { SearchItemProps } from '../../interfaces/interface';
 const SearchItem = (props: SearchItemProps) => {
   return (
     <ItemWrapper>
-      <ItemImg src={props.imageSrc} />
+      {props.imageSrc ? (
+        <ItemImg src={`https://image.tmdb.org/t/p/original${props.imageSrc}`} />
+      ) : (
+        <SkeletonImage />
+      )}
+
       <InfoWrapper>
         <ItemTitle>{props.title}</ItemTitle>
         <PlayImg src='/images/search/play-circle.svg' />
@@ -26,14 +31,28 @@ const ItemWrapper = styled.div`
 `;
 
 const ItemImg = styled.img`
-  background-color: #ffffff;
+  background-color: #191919;
+
+  box-sizing: content-box;
 
   width: 146px;
   height: 76px;
+  aspect-ratio: 146/76;
 
+  border: 0;
   border-radius: 2px;
 
   object-fit: cover;
+`;
+
+const SkeletonImage = styled.div`
+  background: #191919;
+
+  width: 146px;
+  height: 76px;
+  aspect-ratio: 146/76;
+
+  border-radius: 2px;
 `;
 
 const InfoWrapper = styled.div`
@@ -45,6 +64,7 @@ const InfoWrapper = styled.div`
 
 const ItemTitle = styled.div`
   height: 30px;
+  width: 170px;
 
   font-family: 'SF Pro Display';
   font-style: normal;
@@ -52,10 +72,13 @@ const ItemTitle = styled.div`
   font-size: 14.7222px;
   line-height: 30px;
 
-  text-align: center;
   letter-spacing: 0.751111px;
 
   padding-left: 19px;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 
   color: #ffffff;
 `;
