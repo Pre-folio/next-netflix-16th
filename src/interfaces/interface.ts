@@ -1,6 +1,9 @@
 export interface IThumbnailProps {
   imageSrc: string;
   id: number;
+  title?: string;
+  description?: string;
+  poster_path?: string;
 }
 
 export interface IMovies {
@@ -34,6 +37,6 @@ export interface IFooterIconProps {
 }
 
 export interface DetailPageProps {
-  title: string;
-  description: string;
+  description?: string;
+  poster_path?: string;
 }

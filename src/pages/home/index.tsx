@@ -37,6 +37,11 @@ const HomePage = ({ nowPlayingData, topRatedData, popularData, upComingData }: a
   setPopularMovies(popularData.results);
   setUpComingMovies(upComingData.results);
 
+  console.log(nowPlayingData);
+  console.log(topRatedData);
+  console.log(popularData);
+  console.log(upComingData);
+
   const randomNowPlaying = nowPlayingData.results[Math.floor(Math.random() * nowPlayingData.results.length)];
 
   return (
@@ -47,7 +52,6 @@ const HomePage = ({ nowPlayingData, topRatedData, popularData, upComingData }: a
         imageSrc={`https://image.tmdb.org/t/p/original${randomNowPlaying.backdrop_path}`}
       />
       <PlayBar />
-
       <Column gap="22px" marginTop="43px">
         <MoviesListBar title="Previews" gap="23px">
           {upComingMovies.map((movie) => {
@@ -57,6 +61,8 @@ const HomePage = ({ nowPlayingData, topRatedData, popularData, upComingData }: a
                 key={movie.id}
                 id={movie.id}
                 imageSrc={`https://image.tmdb.org/t/p/original${imagePath}`}
+                description={movie.overview}
+                poster_path={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
               />
             );
           })}
@@ -69,6 +75,8 @@ const HomePage = ({ nowPlayingData, topRatedData, popularData, upComingData }: a
                 key={movie.id}
                 id={movie.id}
                 imageSrc={`https://image.tmdb.org/t/p/original${imagePath}`}
+                description={movie.overview}
+                poster_path={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
               />
             );
           })}
@@ -81,6 +89,8 @@ const HomePage = ({ nowPlayingData, topRatedData, popularData, upComingData }: a
                 key={movie.id}
                 id={movie.id}
                 imageSrc={`https://image.tmdb.org/t/p/original${imagePath}`}
+                description={movie.overview}
+                poster_path={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
               />
             );
           })}
@@ -93,6 +103,8 @@ const HomePage = ({ nowPlayingData, topRatedData, popularData, upComingData }: a
                 key={movie.id}
                 id={movie.id}
                 imageSrc={`https://image.tmdb.org/t/p/original${imagePath}`}
+                description={movie.overview}
+                poster_path={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
               />
             );
           })}

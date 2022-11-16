@@ -1,6 +1,6 @@
-import styled from "styled-components";
-import Image from "next/image";
-import { IThumbnailProps } from "../../interfaces/interface";
+import styled from 'styled-components';
+import Image from 'next/image';
+import { IThumbnailProps } from '../../interfaces/interface';
 
 const BackgroundImage = ({ imageSrc, id }: IThumbnailProps) => {
   return (
