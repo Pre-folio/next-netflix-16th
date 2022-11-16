@@ -3,17 +3,21 @@ import { Column } from '../../components/elements/Column';
 import Footer from '../../components/elements/Footer';
 import PlayButton from '../../components/elements/PlayButton';
 import { DetailPageProps } from '../../interfaces/interface';
+import { useRouter } from 'next/router';
 
-const DetailPage = ({ title, description }: DetailPageProps) => {
+const DetailPage = () => {
+  const router = useRouter();
+  const { description, poster_path }: DetailPageProps = router.query;
+
   return (
     <Container>
       <ContentWrapper>
-        <ContentImage />
+        <ContentImage src={poster_path} alt="포스터 이미지" />
         <PlayButton width="303px" marginTop="13px" />
       </ContentWrapper>
       <TextWrapper>
-        <div className="detail-title">{title} title</div>
-        <div className="detail-description">{description} description</div>
+        <div className="detail-title">Previews</div>
+        <div className="detail-description">{description}</div>
       </TextWrapper>
       <Footer />
     </Container>

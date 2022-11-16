@@ -1,20 +1,20 @@
 @font-face {
   font-family: SFProDisplay;
-  src: url('/public/fonts/SFPRODISPLAYREGULAR.OTF');
+  src: url('/fonts/SFPRODISPLAYREGULAR.OTF');
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'SFProDisplay';
-  src: url('/public/fonts/SFPRODISPLAYMEDIUM.OTF');
+  src: url('/fonts/SFPRODISPLAYMEDIUM.OTF');
   font-weight: 500;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'SFProDisplay';
-  src: url('/public/fonts/SFPRODISPLAYBOLD.OTF');
+  src: url('/fonts/SFPRODISPLAYBOLD.OTF');
   font-weight: 700;
   font-style: normal;
 }
@@ -24,6 +24,6 @@
   letter-spacing: -0.07px;
 }
 .detail-description {
-  font: normal normal 400 14px/14.17px SFProDisplay;
+  font: normal normal 400 12px/16px SFProDisplay;
   letter-spacing: -0.03px;
 }
