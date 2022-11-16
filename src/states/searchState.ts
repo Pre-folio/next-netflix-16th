@@ -5,3 +5,8 @@ export const searchedMoviesState = atom<IMovies[]>({
   key: 'searchState/searchedMovies',
   default: [],
 });
+
+export const searchWordState = atom<string>({
+  key: 'searchState/searchWord',
+  default: '',
+});

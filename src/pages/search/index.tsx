@@ -10,14 +10,20 @@ import { selectedContentState } from '../../states/footerState';
 import { searchedMoviesState } from '../../states/searchState';
 
 const SearchPage = (searchedData: any) => {
-  const [searchedMovies, setSearchedMovies] =
-    useRecoilState(searchedMoviesState);
   const [selectedIcon, setSelectedIcon] = useRecoilState(selectedContentState);
   const router = useRouter();
   const pageName = router.asPath.slice(1);
   const [searchWord, setSearchWord] = useState('');
+  const [searchedMovies, setSearchedMovies] =
+    useRecoilState(searchedMoviesState);
 
   console.log(searchedData.results);
+  setSearchedMovies(searchedData.results);
+
+  // useEffect(() => {
+  //   console.log(searchedData.results);
+  //   setSearchedMovies(searchedData.results);
+  // }, [searchedData]);
 
   useEffect(() => {
     setSelectedIcon(pageName);
@@ -44,6 +50,7 @@ const SearchPageContainer = styled.div`
 
 export async function getServerSideProps() {
   const searchedData: any = await searchMovies('ter');
+
   return {
     props: searchedData,
   };

@@ -1,14 +1,25 @@
+import { useRecoilState, useRecoilValue } from 'recoil';
 import styled from 'styled-components';
+import { searchMovies } from '../../api/getMovies';
+import { searchedMoviesState, searchWordState } from '../../states/searchState';
 import SearchItem from './SearchItem';
 
 const SearchList = () => {
+  const [searchedMovies, setSearchedMovies] =
+    useRecoilState(searchedMoviesState);
+
   return (
     <ListWrapper>
       <ListTitle>Top Searches</ListTitle>
-      <SearchItem
-        title={'Citation'}
-        imageSrc={`https://image.tmdb.org/t/p/original`}
-      />
+      {searchedMovies.map((movie) => {
+        return (
+          <SearchItem
+            key={movie.id}
+            title={movie.original_title}
+            imageSrc={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
+          />
+        );
+      })}
     </ListWrapper>
   );
 };
