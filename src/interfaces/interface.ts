@@ -37,6 +37,6 @@ export interface IFooterIconProps {
 }
 
 export interface DetailPageProps {
-  description: string;
-  poster_path: string;
+  description?: string;
+  poster_path?: string;
 }
