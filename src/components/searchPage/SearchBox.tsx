@@ -3,18 +3,15 @@ import Image from 'next/image';
 import { IThumbnailProps } from '../../interfaces/interface';
 import useInput from '../../hooks/useInput';
 import { useEffect } from 'react';
-import { searchMovies } from '../../api/getMovies';
 import { useRecoilState } from 'recoil';
 import { searchedMoviesState, searchWordState } from '../../states/searchState';
 
 const SearchBox = () => {
   const search = useInput('');
-
   const [searchWord, setSearchWord] = useRecoilState(searchWordState);
 
   useEffect(() => {
     setSearchWord(search.value);
-    const call = () => searchMovies(search.value);
   }, [search.value]);
 
   return (
@@ -22,8 +19,6 @@ const SearchBox = () => {
       <SearchImg src='/images/search/search.svg' />
       <Input placeholder='Search for a movie' {...search} />
       <SearchImg src='/images/search/cancel.svg' />
-
-      {/* <SearchButton /> */}
     </Form>
   );
 };
