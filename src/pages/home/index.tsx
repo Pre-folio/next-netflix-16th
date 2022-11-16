@@ -52,7 +52,6 @@ const HomePage = ({ nowPlayingData, topRatedData, popularData, upComingData }: a
         imageSrc={`https://image.tmdb.org/t/p/original${randomNowPlaying.backdrop_path}`}
       />
       <PlayBar />
-
       <Column gap="22px" marginTop="43px">
         <MoviesListBar title="Previews" gap="23px">
           {upComingMovies.map((movie) => {

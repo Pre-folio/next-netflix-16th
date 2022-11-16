@@ -7,7 +7,7 @@ import { useRouter } from 'next/router';
 
 const DetailPage = () => {
   const router = useRouter();
-  const { description, poster_path }: DetailPageProps = router.query;
+  const { description, poster_path }: any = router.query;
 
   return (
     <Container>
