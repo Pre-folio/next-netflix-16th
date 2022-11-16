@@ -45,3 +45,8 @@ export interface SearchItemProps {
   imageSrc: string;
   title: string;
 }
+
+export interface SearchItemProps {
+  imageSrc: string;
+  title: string;
+}

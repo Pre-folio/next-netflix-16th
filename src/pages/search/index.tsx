@@ -10,7 +10,7 @@ import SearchList from '../../components/searchPage/SearchList';
 import { selectedContentState } from '../../states/footerState';
 import { searchedMoviesState, searchWordState } from '../../states/searchState';
 
-const SearchPage = () => {
+const SearchPage = (searchedData: any) => {
   const [selectedIcon, setSelectedIcon] = useRecoilState(selectedContentState);
   const router = useRouter();
   const pageName = router.asPath.slice(1);
