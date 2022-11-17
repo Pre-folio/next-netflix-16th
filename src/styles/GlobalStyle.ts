@@ -6,6 +6,10 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
 
+  *:focus {
+    outline: 0;
+}
+
   body {
     font-family: 'SFProDisplay' !important;
     padding: 0;
@@ -31,6 +35,10 @@ const GlobalStyle = createGlobalStyle`
   a {
     color: inherit;
     text-decoration: none;
+  }
+
+  img{
+    border: 0;
   }
 
   ::-webkit-scrollbar {

@@ -1,3 +1,5 @@
+import { NumberLiteralType } from 'typescript';
+
 export interface IThumbnailProps {
   imageSrc: string;
   id: number;
