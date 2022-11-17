@@ -1,18 +1,32 @@
+import Link from 'next/link';
 import styled from 'styled-components';
-import { SearchItemProps } from '../../interfaces/interface';
+import { IMovies } from '../../interfaces/interface';
 
-const SearchItem = (props: SearchItemProps) => {
+const SearchItem = (props: IMovies) => {
   return (
     <ItemWrapper>
-      {props.imageSrc ? (
-        <ItemImg src={`https://image.tmdb.org/t/p/original${props.imageSrc}`} />
+      {props.backdrop_path ? (
+        <ItemImg
+          src={`https://image.tmdb.org/t/p/original${props.backdrop_path}`}
+        />
       ) : (
         <SkeletonImage />
       )}
-
       <InfoWrapper>
-        <ItemTitle>{props.title}</ItemTitle>
-        <PlayImg src='/images/search/play-circle.svg' />
+        <ItemTitle>{props.original_title}</ItemTitle>
+        <Link
+          href={{
+            pathname: `/home/${props.id}`,
+            query: {
+              title: props.original_title,
+              description: props.overview,
+              poster_path: `https://image.tmdb.org/t/p/original${props.poster_path}`,
+            },
+          }}
+          as={`/home/${props.id}`}
+        >
+          <PlayImg src='/images/search/play-circle.svg' />
+        </Link>
       </InfoWrapper>
     </ItemWrapper>
   );

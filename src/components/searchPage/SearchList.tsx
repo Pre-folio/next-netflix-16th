@@ -12,13 +12,7 @@ const SearchList = () => {
     <ListWrapper>
       <ListTitle>Top Searches</ListTitle>
       {searchedMovies.map((movie) => {
-        return (
-          <SearchItem
-            key={movie.id}
-            title={movie.original_title}
-            imageSrc={movie.backdrop_path}
-          />
-        );
+        return <SearchItem key={movie.id} {...movie} />;
       })}
     </ListWrapper>
   );

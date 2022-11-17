@@ -1,3 +1,5 @@
+import { NumberLiteralType } from 'typescript';
+
 export interface IThumbnailProps {
   imageSrc: string;
   id: number;
@@ -39,14 +41,4 @@ export interface IFooterIconProps {
 export interface DetailPageProps {
   description?: string;
   poster_path?: string;
-}
-
-export interface SearchItemProps {
-  imageSrc: string;
-  title: string;
-}
-
-export interface SearchItemProps {
-  imageSrc: string;
-  title: string;
 }
