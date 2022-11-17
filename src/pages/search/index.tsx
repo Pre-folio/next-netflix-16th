@@ -10,7 +10,7 @@ import SearchList from '../../components/searchPage/SearchList';
 import { selectedContentState } from '../../states/footerState';
 import { searchedMoviesState, searchWordState } from '../../states/searchState';
 
-const SearchPage = (searchedData: any) => {
+const SearchPage = () => {
   const [selectedIcon, setSelectedIcon] = useRecoilState(selectedContentState);
   const router = useRouter();
   const pageName = router.asPath.slice(1);
@@ -22,23 +22,17 @@ const SearchPage = (searchedData: any) => {
   useEffect(() => {
     setIsLoading(true);
     if (searchWord) {
-      fetch(
-        `https://api.themoviedb.org/3/search/movie/?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}&query=${searchWord}`
-      )
-        .then((response) => response.json())
-        .then((data) => {
-          setSearchedMovies(data.results);
-          setIsLoading(false);
-        });
+      searchMovies(searchWord).then((res) => {
+        setSearchedMovies(res.data.results);
+        setIsLoading(false);
+        return res.data;
+      });
     } else {
-      fetch(
-        `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}`
-      )
-        .then((response) => response.json())
-        .then((data) => {
-          setSearchedMovies(data.results);
-          setIsLoading(false);
-        });
+      getPopular().then((res) => {
+        setSearchedMovies(res.results);
+        setIsLoading(false);
+        return res.data;
+      });
     }
   }, [searchWord]);
 
@@ -65,9 +59,9 @@ const SearchPageContainer = styled.div`
   flex-direction: column;
 `;
 
-// export async function getServerSideProps() {
-//   const searchedData: any = await searchMovies('hi');
-//   return {
-//     props: searchedData,
-//   };
-// }
+export async function getServerSideProps() {
+  const initialData = await getPopular();
+  return {
+    props: initialData,
+  };
+}

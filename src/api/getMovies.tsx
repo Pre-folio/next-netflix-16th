@@ -24,7 +24,5 @@ export const getUpcoming = () => {
 };
 
 export const searchMovies = (inputWord: string) => {
-  return client
-    .get(`search/movie/?api_key=${API_KEY}&query=${inputWord}`)
-    .then((res) => res.data);
+  return client.get(`search/movie/?api_key=${API_KEY}&query=${inputWord}`);
 };

@@ -1,14 +1,12 @@
 import styled from 'styled-components';
-import Image from 'next/image';
-import { IThumbnailProps } from '../../interfaces/interface';
 import useInput from '../../hooks/useInput';
 import { useEffect } from 'react';
-import { useRecoilState } from 'recoil';
-import { searchedMoviesState, searchWordState } from '../../states/searchState';
+import { useSetRecoilState } from 'recoil';
+import { searchWordState } from '../../states/searchState';
 
 const SearchBox = () => {
   const search = useInput('');
-  const [searchWord, setSearchWord] = useRecoilState(searchWordState);
+  const setSearchWord = useSetRecoilState(searchWordState);
 
   useEffect(() => {
     setSearchWord(search.value);
