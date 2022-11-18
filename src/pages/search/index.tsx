@@ -19,18 +19,22 @@ const SearchPage = (searchedData: any) => {
   const [searchWord, setSearchWord] = useRecoilState(searchWordState);
   const debouncedSearchWord = useDebounce(searchWord, 500);
   const [searchedMovies, setSearchedMovies] = useRecoilState(searchedMoviesState);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  // const [popularPageLength, setPopularPageLength] = useState<number>(1);
+  const [searchedPageLength, setSearchedPageLength] = useState<number>(1);
 
   useEffect(() => {
     setIsLoading(true);
     if (debouncedSearchWord) {
       searchMovies(searchWord).then((res) => {
         setSearchedMovies(res.data.results);
+        setSearchedPageLength(res.data.total_pages);
         setIsLoading(false);
         return res.data;
       });
     } else {
       getPopular().then((res) => {
+        setSearchedPageLength(res.data.total_pages);
         setSearchedMovies(res.results);
         setIsLoading(false);
         return res.data;
@@ -40,7 +44,7 @@ const SearchPage = (searchedData: any) => {
 
   useEffect(() => {
     setSelectedIcon(pageName);
-  }, []);
+  });
 
   return (
     <SearchPageContainer>
