@@ -34,7 +34,7 @@ const SearchPage = (searchedData: any) => {
       });
     } else {
       getPopular().then((res) => {
-        setSearchedPageLength(res.data.total_pages);
+        setSearchedPageLength(res.total_pages);
         setSearchedMovies(res.results);
         setIsLoading(false);
         return res.data;
