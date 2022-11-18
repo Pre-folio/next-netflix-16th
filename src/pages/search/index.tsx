@@ -55,7 +55,11 @@ export default SearchPage;
 
 const SearchPageContainer = styled.div`
   width: 375px;
-  height: auto;
+  min-height: 100%;
+
+  position: relative;
+
+  padding-bottom: 53px;
 
   display: flex;
   flex-direction: column;
