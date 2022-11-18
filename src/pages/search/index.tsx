@@ -11,26 +11,30 @@ import { useDebounce } from '../../hooks/useDebounce';
 import { selectedContentState } from '../../states/footerState';
 import { searchedMoviesState, searchWordState } from '../../states/searchState';
 
-const SearchPage = () => {
-  const [selectedIcon, setSelectedIcon] = useRecoilState(selectedContentState);
+const SearchPage = (searchedData: any) => {
   const router = useRouter();
+
+  const [selectedIcon, setSelectedIcon] = useRecoilState(selectedContentState);
   const pageName = router.asPath.slice(1);
   const [searchWord, setSearchWord] = useRecoilState(searchWordState);
   const debouncedSearchWord = useDebounce(searchWord, 500);
-  const [searchedMovies, setSearchedMovies] =
-    useRecoilState(searchedMoviesState);
-  const [isLoading, setIsLoading] = useState(false);
+  const [searchedMovies, setSearchedMovies] = useRecoilState(searchedMoviesState);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  // const [popularPageLength, setPopularPageLength] = useState<number>(1);
+  const [searchedPageLength, setSearchedPageLength] = useState<number>(1);
 
   useEffect(() => {
     setIsLoading(true);
     if (debouncedSearchWord) {
       searchMovies(searchWord).then((res) => {
         setSearchedMovies(res.data.results);
+        setSearchedPageLength(res.data.total_pages);
         setIsLoading(false);
         return res.data;
       });
     } else {
       getPopular().then((res) => {
+        setSearchedPageLength(res.total_pages);
         setSearchedMovies(res.results);
         setIsLoading(false);
         return res.data;
@@ -40,7 +44,7 @@ const SearchPage = () => {
 
   useEffect(() => {
     setSelectedIcon(pageName);
-  }, []);
+  });
 
   return (
     <SearchPageContainer>

@@ -8,8 +8,7 @@ import SearchItem from './SearchItem';
 import SkeletonItem from './SkeletonItem';
 
 const SearchList = ({ isLoading }: SearchListProps) => {
-  const [searchedMovies, setSearchedMovies] =
-    useRecoilState(searchedMoviesState);
+  const [searchedMovies, setSearchedMovies] = useRecoilState(searchedMoviesState);
   let arr = new Array(20).fill(1);
 
   return (
@@ -42,7 +41,6 @@ export default SearchList;
 const ListWrapper = styled.div``;
 
 const ListTitle = styled.h1`
-  font-family: SF Pro Display;
   font-size: 27px;
   font-weight: 700;
   line-height: 20px;
@@ -52,4 +50,10 @@ const ListTitle = styled.h1`
   padding: 21px 10px 21px 10px;
 
   color: #ffffff;
+`;
+
+const SearchItemWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
 `;

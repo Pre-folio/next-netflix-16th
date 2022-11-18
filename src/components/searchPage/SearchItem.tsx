@@ -7,9 +7,7 @@ const SearchItem = (props: IMovies) => {
   return (
     <ItemWrapper>
       {props.backdrop_path ? (
-        <ItemImg
-          src={`https://image.tmdb.org/t/p/original${props.backdrop_path}`}
-        />
+        <ItemImg src={`https://image.tmdb.org/t/p/original${props.backdrop_path}`} />
       ) : (
         <SkeletonImage />
       )}
@@ -26,7 +24,7 @@ const SearchItem = (props: IMovies) => {
           }}
           as={`/home/${props.id}`}
         >
-          <PlayImg src='/images/search/play-circle.svg' />
+          <PlayImg src="/images/search/play-circle.svg" />
         </Link>
       </InfoWrapper>
     </ItemWrapper>

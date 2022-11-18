@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@tanstack/react-query": "^4.16.1",
     "@types/node": "18.11.9",
     "@types/react": "18.0.25",
     "@types/react-dom": "18.0.8",
@@ -22,7 +23,6 @@
     "react-dom": "18.2.0",
     "react-lazy-load-image-component": "^1.5.6",
     "react-lottie": "^1.2.3",
-    "react-query": "^3.39.2",
     "recoil": "^0.7.6",
     "styled-components": "^5.3.6",
     "styled-normalize": "^8.0.7",
