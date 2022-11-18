@@ -11,14 +11,14 @@ import { useDebounce } from '../../hooks/useDebounce';
 import { selectedContentState } from '../../states/footerState';
 import { searchedMoviesState, searchWordState } from '../../states/searchState';
 
-const SearchPage = () => {
-  const [selectedIcon, setSelectedIcon] = useRecoilState(selectedContentState);
+const SearchPage = (searchedData: any) => {
   const router = useRouter();
+
+  const [selectedIcon, setSelectedIcon] = useRecoilState(selectedContentState);
   const pageName = router.asPath.slice(1);
   const [searchWord, setSearchWord] = useRecoilState(searchWordState);
   const debouncedSearchWord = useDebounce(searchWord, 500);
-  const [searchedMovies, setSearchedMovies] =
-    useRecoilState(searchedMoviesState);
+  const [searchedMovies, setSearchedMovies] = useRecoilState(searchedMoviesState);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
