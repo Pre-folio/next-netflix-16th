@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import React from 'react';
 import styled from 'styled-components';
 import { IMovies } from '../../interfaces/interface';
 
@@ -32,7 +33,7 @@ const SearchItem = (props: IMovies) => {
   );
 };
 
-export default SearchItem;
+export default React.memo(SearchItem);
 
 const ItemWrapper = styled.div`
   background-color: #424242;

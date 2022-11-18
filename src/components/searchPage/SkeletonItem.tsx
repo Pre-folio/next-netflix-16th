@@ -1,3 +1,4 @@
+import React from 'react';
 import styled from 'styled-components';
 
 const SkeletonItem = () => {
@@ -9,7 +10,7 @@ const SkeletonItem = () => {
   );
 };
 
-export default SkeletonItem;
+export default React.memo(SkeletonItem);
 
 const ItemWrapper = styled.div`
   background-color: #424242;
