@@ -23,6 +23,8 @@ export const getUpcoming = () => {
     .then((res) => res.data);
 };
 
-export const searchMovies = (inputWord: string) => {
-  return client.get(`search/movie/?api_key=${API_KEY}&query=${inputWord}`);
+export const searchMovies = (inputWord: string, page?: number) => {
+  return client.get(
+    `search/movie/?api_key=${API_KEY}&query=${inputWord}&page=${page}`
+  );
 };

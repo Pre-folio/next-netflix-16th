@@ -7,6 +7,7 @@ import { getPopular, searchMovies } from '../../api/getMovies';
 import Footer from '../../components/elements/Footer';
 import SearchBox from '../../components/searchPage/SearchBox';
 import SearchList from '../../components/searchPage/SearchList';
+import { useDebounce } from '../../hooks/useDebounce';
 import { selectedContentState } from '../../states/footerState';
 import { searchedMoviesState, searchWordState } from '../../states/searchState';
 
@@ -15,13 +16,14 @@ const SearchPage = () => {
   const router = useRouter();
   const pageName = router.asPath.slice(1);
   const [searchWord, setSearchWord] = useRecoilState(searchWordState);
+  const debouncedSearchWord = useDebounce(searchWord, 500);
   const [searchedMovies, setSearchedMovies] =
     useRecoilState(searchedMoviesState);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     setIsLoading(true);
-    if (searchWord) {
+    if (debouncedSearchWord) {
       searchMovies(searchWord).then((res) => {
         setSearchedMovies(res.data.results);
         setIsLoading(false);
@@ -34,7 +36,7 @@ const SearchPage = () => {
         return res.data;
       });
     }
-  }, [searchWord]);
+  }, [debouncedSearchWord]);
 
   useEffect(() => {
     setSelectedIcon(pageName);
