@@ -42,6 +42,8 @@ const ItemWrapper = styled.div`
 
   display: flex;
   align-items: center;
+
+  margin-bottom: 3px;
 `;
 
 const ItemImg = styled.img`

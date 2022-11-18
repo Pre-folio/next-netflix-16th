@@ -43,7 +43,7 @@ const SearchPage = () => {
   return (
     <SearchPageContainer>
       <SearchBox />
-      <SearchList />
+      <SearchList isLoading={isLoading} />
       <Footer />
     </SearchPageContainer>
   );
@@ -59,9 +59,9 @@ const SearchPageContainer = styled.div`
   flex-direction: column;
 `;
 
-export async function getServerSideProps() {
-  const initialData = await getPopular();
-  return {
-    props: initialData,
-  };
-}
+// export async function getServerSideProps() {
+//   const initialData = await getPopular();
+//   return {
+//     props: initialData,
+//   };
+// }

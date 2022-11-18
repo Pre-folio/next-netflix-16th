@@ -42,3 +42,7 @@ export interface DetailPageProps {
   description?: string;
   poster_path?: string;
 }
+
+export interface SearchListProps {
+  isLoading: boolean;
+}
