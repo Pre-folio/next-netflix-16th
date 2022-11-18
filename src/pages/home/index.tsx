@@ -50,11 +50,6 @@ const HomePage = ({
   setPopularMovies(popularData.results);
   setUpComingMovies(upComingData.results);
 
-  console.log(nowPlayingData);
-  console.log(topRatedData);
-  console.log(popularData);
-  console.log(upComingData);
-
   const randomNowPlaying =
     nowPlayingData.results[
       Math.floor(Math.random() * nowPlayingData.results.length)
