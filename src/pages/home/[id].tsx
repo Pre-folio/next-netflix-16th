@@ -4,20 +4,29 @@ import Footer from '../../components/elements/Footer';
 import PlayButton from '../../components/elements/PlayButton';
 import { DetailPageProps } from '../../interfaces/interface';
 import { useRouter } from 'next/router';
+import { useEffect } from 'react';
+import { useRecoilState } from 'recoil';
+import { selectedContentState } from '../../states/footerState';
 
 const DetailPage = () => {
   const router = useRouter();
+  const pageName = router.asPath.split('/')[1];
+  const [selectedIcon, setSelectedIcon] = useRecoilState(selectedContentState);
   const { description, poster_path }: DetailPageProps = router.query;
+
+  useEffect(() => {
+    setSelectedIcon(pageName);
+  }, []);
 
   return (
     <Container>
       <ContentWrapper>
-        <ContentImage src={poster_path} alt="포스터 이미지" />
-        <PlayButton width="303px" marginTop="13px" />
+        <ContentImage src={poster_path} alt='포스터 이미지' />
+        <PlayButton width='303px' marginTop='13px' />
       </ContentWrapper>
       <TextWrapper>
-        <div className="detail-title">Previews</div>
-        <div className="detail-description">{description}</div>
+        <div className='detail-title'>Previews</div>
+        <div className='detail-description'>{description}</div>
       </TextWrapper>
       <Footer />
     </Container>

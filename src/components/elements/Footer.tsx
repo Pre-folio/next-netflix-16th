@@ -21,23 +21,42 @@ const Footer = () => {
   return (
     <Wrapper>
       <ItemWrapper>
-        <HomeIcon onClick={handleOnClick} isSelected={selectedIcon === 'home'} />
+        <HomeIcon
+          onClick={handleOnClick}
+          isSelected={selectedIcon === 'home'}
+        />
         <FooterItem isSelected={selectedIcon === 'home'}>Home</FooterItem>
       </ItemWrapper>
       <ItemWrapper>
-        <SearchIcon onClick={handleOnClick} isSelected={selectedIcon === 'search'} />
+        <SearchIcon
+          onClick={handleOnClick}
+          isSelected={selectedIcon === 'search'}
+        />
         <FooterItem isSelected={selectedIcon === 'search'}>Search</FooterItem>
       </ItemWrapper>
       <ItemWrapper>
-        <ComingSoonIcon onClick={handleOnClick} isSelected={selectedIcon === 'coming-soon'} />
-        <FooterItem isSelected={selectedIcon === 'comming-soon'}>Coming Soon</FooterItem>
+        <ComingSoonIcon
+          onClick={handleOnClick}
+          isSelected={selectedIcon === 'coming-soon'}
+        />
+        <FooterItem isSelected={selectedIcon === 'comming-soon'}>
+          Coming Soon
+        </FooterItem>
       </ItemWrapper>
       <ItemWrapper>
-        <DownloadsIcon onClick={handleOnClick} isSelected={selectedIcon === 'downloads'} />
-        <FooterItem isSelected={selectedIcon === 'downloads'}>Downloads</FooterItem>
+        <DownloadsIcon
+          onClick={handleOnClick}
+          isSelected={selectedIcon === 'downloads'}
+        />
+        <FooterItem isSelected={selectedIcon === 'downloads'}>
+          Downloads
+        </FooterItem>
       </ItemWrapper>
       <ItemWrapper>
-        <MoreIcon onClick={handleOnClick} isSelected={selectedIcon === 'more'} />
+        <MoreIcon
+          onClick={handleOnClick}
+          isSelected={selectedIcon === 'more'}
+        />
         <FooterItem isSelected={selectedIcon === 'more'}>More</FooterItem>
       </ItemWrapper>
     </Wrapper>
