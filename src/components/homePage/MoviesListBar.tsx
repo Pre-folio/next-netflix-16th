@@ -1,7 +1,6 @@
-import styled from "styled-components";
-import { Row } from "../elements/Row";
-import { Column } from "../elements/Column";
-import React from "react";
+import styled from 'styled-components';
+import { Column } from '../elements/Column';
+import React from 'react';
 
 type MoviesListBarProps = {
   children: React.ReactNode;
@@ -12,9 +11,9 @@ type MoviesListBarProps = {
 
 const MoviesListBar = (props: MoviesListBarProps) => {
   return (
-    <Wrapper style={{ paddingLeft: "12px", marginTop: props.marginTop }}>
-      <div style={{ marginLeft: "4px" }}>{props.title}</div>
-      <Wrapper style={{ marginTop: "14px" }}>
+    <Wrapper style={{ paddingLeft: '12px', marginTop: props.marginTop }}>
+      <div style={{ marginLeft: '4px' }}>{props.title}</div>
+      <Wrapper style={{ marginTop: '14px' }}>
         <Column gap={props.gap}>
           <ContentWrapper>{props.children}</ContentWrapper>
         </Column>

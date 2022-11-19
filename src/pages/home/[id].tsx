@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { Column } from '../../components/elements/Column';
 import Footer from '../../components/elements/Footer';
 import PlayButton from '../../components/elements/PlayButton';
 import { DetailPageProps } from '../../interfaces/interface';
@@ -21,12 +20,12 @@ const DetailPage = () => {
   return (
     <Container>
       <ContentWrapper>
-        <ContentImage src={poster_path} alt='포스터 이미지' />
-        <PlayButton width='303px' marginTop='13px' />
+        <ContentImage src={poster_path} alt="포스터 이미지" />
+        <PlayButton width="303px" marginTop="13px" />
       </ContentWrapper>
       <TextWrapper>
-        <div className='detail-title'>Previews</div>
-        <div className='detail-description'>{description}</div>
+        <div className="detail-title">Previews</div>
+        <div className="detail-description">{description}</div>
       </TextWrapper>
       <Footer />
     </Container>
