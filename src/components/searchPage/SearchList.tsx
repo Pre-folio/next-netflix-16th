@@ -12,12 +12,13 @@ import styled from 'styled-components';
 import { useDebounce } from '../../hooks/useDebounce';
 
 const SearchList = () => {
+  const [pastWord, setPastWord] = useState('');
   const [searchWord, setSearchWord] = useRecoilState(searchWordState);
-  const [word, setWord] = useState(1);
   const debouncedSearchWord = useDebounce(searchWord, 500);
+  const [ref, isView] = useInView();
+
   const { getBoard, getNextPage, getBoardIsSuccess, getNextPageIsPossible } =
     useInfiniteScrollSearchQuery(debouncedSearchWord);
-  const [ref, isView] = useInView();
 
   useEffect(() => {
     if (isView && getNextPageIsPossible) {
