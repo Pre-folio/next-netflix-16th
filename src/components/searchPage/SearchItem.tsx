@@ -7,7 +7,9 @@ const SearchItem = (props: IMovies) => {
   return (
     <ItemWrapper>
       {props.backdrop_path ? (
-        <ItemImg src={`https://image.tmdb.org/t/p/original${props.backdrop_path}`} />
+        <ItemImg
+          src={`https://image.tmdb.org/t/p/original${props.backdrop_path}`}
+        />
       ) : (
         <SkeletonImage />
       )}
@@ -24,7 +26,7 @@ const SearchItem = (props: IMovies) => {
           }}
           as={`/home/${props.id}`}
         >
-          <PlayImg src="/images/search/play-circle.svg" />
+          <PlayImg src='/images/search/play-circle.svg' />
         </Link>
       </InfoWrapper>
     </ItemWrapper>
@@ -81,7 +83,6 @@ const ItemTitle = styled.div`
   height: 30px;
   width: 170px;
 
-  font-family: 'SF Pro Display';
   font-style: normal;
   font-weight: 400;
   font-size: 14.7222px;

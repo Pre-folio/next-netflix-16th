@@ -15,7 +15,8 @@ const Footer = () => {
 
   const handleOnClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     const selectedContent = e.currentTarget.name;
-    router.push(`/${selectedContent}`);
+    if (selectedContent === 'home' || selectedContent === 'search')
+      router.push(`/${selectedContent}`);
   };
 
   return (
