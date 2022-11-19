@@ -36,8 +36,8 @@ const Footer = () => {
       </ItemWrapper>
       <ItemWrapper>
         <ComingSoonIcon
-          onClick={handleOnClick}
-          isSelected={selectedIcon === 'coming-soon'}
+        // onClick={handleOnClick}
+        // isSelected={selectedIcon === 'coming-soon'}
         />
         <FooterItem isSelected={selectedIcon === 'comming-soon'}>
           Coming Soon
@@ -45,8 +45,8 @@ const Footer = () => {
       </ItemWrapper>
       <ItemWrapper>
         <DownloadsIcon
-          onClick={handleOnClick}
-          isSelected={selectedIcon === 'downloads'}
+        // onClick={handleOnClick}
+        // isSelected={selectedIcon === 'downloads'}
         />
         <FooterItem isSelected={selectedIcon === 'downloads'}>
           Downloads
@@ -54,8 +54,8 @@ const Footer = () => {
       </ItemWrapper>
       <ItemWrapper>
         <MoreIcon
-          onClick={handleOnClick}
-          isSelected={selectedIcon === 'more'}
+        // onClick={handleOnClick}
+        // isSelected={selectedIcon === 'more'}
         />
         <FooterItem isSelected={selectedIcon === 'more'}>More</FooterItem>
       </ItemWrapper>
