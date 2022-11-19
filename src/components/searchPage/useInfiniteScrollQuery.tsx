@@ -1,10 +1,5 @@
 import { useInfiniteQuery } from '@tanstack/react-query';
-import { AnyTxtRecord } from 'dns';
-import { useEffect, useState } from 'react';
-import { useRecoilState } from 'recoil';
 import client from '../../api/client';
-import { useDebounce } from '../../hooks/useDebounce';
-import { searchWordState } from '../../states/searchState';
 const API_KEY = process.env.NEXT_PUBLIC_TMDB_API_KEY;
 
 export function useInfiniteScrollQuery() {
@@ -50,6 +45,7 @@ export function useInfiniteScrollSearchQuery(debouncedSearchWord: string) {
     fetchNextPage: getNextPage,
     isSuccess: getBoardIsSuccess,
     hasNextPage: getNextPageIsPossible,
+    isLoading: isLoading,
   } = useInfiniteQuery(['search', debouncedSearchWord], getSearchData, {
     getNextPageParam: (lastPage: any, pages: any) => {
       if (!lastPage.isLast) return lastPage.current_page + 1;
@@ -62,5 +58,6 @@ export function useInfiniteScrollSearchQuery(debouncedSearchWord: string) {
     getNextPage,
     getBoardIsSuccess,
     getNextPageIsPossible,
+    isLoading,
   };
 }
