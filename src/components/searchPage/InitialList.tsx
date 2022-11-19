@@ -1,22 +1,16 @@
 import { useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
 import { searchWordState } from '../../states/searchState';
-import {
-  useInfiniteScrollQuery,
-  useInfiniteScrollSearchQuery,
-} from '../../components/searchPage/useInfiniteScrollQuery';
+import { useInfiniteScrollQuery } from '../../components/searchPage/useInfiniteScrollQuery';
 import { useInView } from 'react-intersection-observer';
 import SkeletonItem from '../../components/searchPage/SkeletonItem';
 import SearchItem from '../../components/searchPage/SearchItem';
 import styled from 'styled-components';
-import { useDebounce } from '../../hooks/useDebounce';
 
-const SearchList = () => {
+const InitialList = () => {
   const [searchWord, setSearchWord] = useRecoilState(searchWordState);
-  const [word, setWord] = useState(1);
-  const debouncedSearchWord = useDebounce(searchWord, 500);
   const { getBoard, getNextPage, getBoardIsSuccess, getNextPageIsPossible } =
-    useInfiniteScrollSearchQuery(debouncedSearchWord);
+    useInfiniteScrollQuery();
   const [ref, isView] = useInView();
 
   useEffect(() => {
@@ -33,6 +27,7 @@ const SearchList = () => {
         getBoardIsSuccess && getBoard!.pages
           ? getBoard!.pages.map((page_data: any, page_num: any) => {
               const board_page = page_data.board_page;
+              //console.log(board_page);
 
               return board_page?.map((item: any, idx: any) => {
                 if (
@@ -57,7 +52,7 @@ const SearchList = () => {
   );
 };
 
-export default SearchList;
+export default InitialList;
 
 const ListTitle = styled.h1`
   font-size: 27px;
