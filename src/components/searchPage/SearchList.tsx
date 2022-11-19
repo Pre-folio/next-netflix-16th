@@ -16,8 +16,9 @@ const SearchList = () => {
   const [searchWord, setSearchWord] = useRecoilState(searchWordState);
   const debouncedSearchWord = useDebounce(searchWord, 500);
   const [ref, isView] = useInView();
+  let arr = new Array(20).fill(1);
 
-  const { getBoard, getNextPage, getBoardIsSuccess, getNextPageIsPossible } =
+  const { getBoard, getNextPage, getBoardIsSuccess, getNextPageIsPossible, isLoading } =
     useInfiniteScrollSearchQuery(debouncedSearchWord);
 
   useEffect(() => {
@@ -29,9 +30,9 @@ const SearchList = () => {
   return (
     <div>
       <ListTitle>Top Searches</ListTitle>
-      {
-        // 데이터를 불러오는데 성공하고 데이터가 0개가 아닐 때 렌더링
-        getBoardIsSuccess && getBoard!.pages
+      {!isLoading
+        ? // 데이터를 불러오는데 성공하고 데이터가 0개가 아닐 때 렌더링
+          getBoardIsSuccess && getBoard!.pages
           ? getBoard!.pages.map((page_data: any, page_num: any) => {
               const board_page = page_data.board_page;
 
@@ -53,7 +54,9 @@ const SearchList = () => {
               });
             })
           : null
-      }
+        : arr.map((arr, index) => {
+            return <SkeletonItem key={index} />;
+          })}
     </div>
   );
 };
