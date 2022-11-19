@@ -7,15 +7,9 @@ import { useDebounce } from '../../hooks/useDebounce';
 import { searchWordState } from '../../states/searchState';
 const API_KEY = process.env.NEXT_PUBLIC_TMDB_API_KEY;
 
-// const getInitialData = (page?: number) => {
-//   return client.get(`movie/popular?api_key=${API_KEY}&page=${page}`);
-// };
-
 export function useInfiniteScrollQuery() {
   const getInitialData = async ({ pageParam = 1 }) => {
-    const res = await client.get(
-      `movie/popular?api_key=${API_KEY}&page=${pageParam}`
-    );
+    const res = await client.get(`movie/popular?api_key=${API_KEY}&page=${pageParam}`);
 
     return {
       board_page: res.data.results,
@@ -40,22 +34,8 @@ export function useInfiniteScrollQuery() {
 }
 
 export function useInfiniteScrollSearchQuery(debouncedSearchWord: string) {
-  useEffect(() => {
-    console.log(debouncedSearchWord);
-    getSearchData({});
-  }, [debouncedSearchWord]);
-
-  const getSearchData = async ({
-    pageParam = 1,
-    searchWord = debouncedSearchWord,
-  }) => {
-    // const [num, setNum] = useState([1, 2]);
-
-    const res = await client.get(
-      `search/movie/?api_key=${API_KEY}&query=${searchWord}&page=${pageParam}`
-    );
-
-    console.log('gg', debouncedSearchWord);
+  const getSearchData = async ({ pageParam = 1, searchWord = debouncedSearchWord }) => {
+    const res = await client.get(`search/movie/?api_key=${API_KEY}&query=${searchWord}&page=${pageParam}`);
 
     return {
       board_page: res.data.results,
@@ -70,7 +50,7 @@ export function useInfiniteScrollSearchQuery(debouncedSearchWord: string) {
     fetchNextPage: getNextPage,
     isSuccess: getBoardIsSuccess,
     hasNextPage: getNextPageIsPossible,
-  } = useInfiniteQuery(['search'], getSearchData, {
+  } = useInfiniteQuery(['search', debouncedSearchWord], getSearchData, {
     getNextPageParam: (lastPage: any, pages: any) => {
       if (!lastPage.isLast) return lastPage.current_page + 1;
       return undefined;
