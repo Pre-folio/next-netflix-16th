@@ -1,10 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
 import { searchWordState } from '../../states/searchState';
-import {
-  useInfiniteScrollQuery,
-  useInfiniteScrollSearchQuery,
-} from '../../components/searchPage/useInfiniteScrollQuery';
+import { useInfiniteScrollSearchQuery } from '../../components/searchPage/useInfiniteScrollQuery';
 import { useInView } from 'react-intersection-observer';
 import SkeletonItem from '../../components/searchPage/SkeletonItem';
 import SearchItem from '../../components/searchPage/SearchItem';
@@ -12,7 +9,6 @@ import styled from 'styled-components';
 import { useDebounce } from '../../hooks/useDebounce';
 
 const SearchList = () => {
-  const [pastWord, setPastWord] = useState('');
   const [searchWord, setSearchWord] = useRecoilState(searchWordState);
   const debouncedSearchWord = useDebounce(searchWord, 500);
   const [ref, isView] = useInView();

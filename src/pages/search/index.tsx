@@ -11,8 +11,6 @@ import { selectedContentState } from '../../states/footerState';
 import { searchedMoviesState, searchWordState } from '../../states/searchState';
 import { useInfiniteScrollQuery } from '../../components/searchPage/useInfiniteScrollQuery';
 import { useInView } from 'react-intersection-observer';
-import SkeletonItem from '../../components/searchPage/SkeletonItem';
-import SearchItem from '../../components/searchPage/SearchItem';
 import InitialList from '../../components/searchPage/InitialList';
 import SearchList from '../../components/searchPage/SearchList';
 
@@ -22,13 +20,11 @@ const SearchPage = () => {
   const pageName = router.asPath.slice(1);
   const [searchWord, setSearchWord] = useRecoilState(searchWordState);
   const debouncedSearchWord = useDebounce(searchWord, 500);
-  const [searchedMovies, setSearchedMovies] =
-    useRecoilState(searchedMoviesState);
+  const [searchedMovies, setSearchedMovies] = useRecoilState(searchedMoviesState);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   // const [popularPageLength, setPopularPageLength] = useState<number>(1);
   const [searchedPageLength, setSearchedPageLength] = useState<number>(1);
-  const { getBoard, getNextPage, getBoardIsSuccess, getNextPageIsPossible } =
-    useInfiniteScrollQuery();
+  const { getBoard, getNextPage, getBoardIsSuccess, getNextPageIsPossible } = useInfiniteScrollQuery();
   const [ref, isView] = useInView();
 
   useEffect(() => {
@@ -84,10 +80,3 @@ const SearchPageContainer = styled.div`
   flex-direction: column;
   gap: 3px;
 `;
-
-// export async function getServerSideProps() {
-//   const initialData = await getPopular();
-//   return {
-//     props: initialData,
-//   };
-// }

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useRecoilState } from 'recoil';
 import { searchWordState } from '../../states/searchState';
 import { useInfiniteScrollQuery } from '../../components/searchPage/useInfiniteScrollQuery';
@@ -9,9 +9,9 @@ import styled from 'styled-components';
 
 const InitialList = () => {
   const [searchWord, setSearchWord] = useRecoilState(searchWordState);
-  const { getBoard, getNextPage, getBoardIsSuccess, getNextPageIsPossible } =
-    useInfiniteScrollQuery();
+  const { getBoard, getNextPage, getBoardIsSuccess, getNextPageIsPossible, isLoading } = useInfiniteScrollQuery();
   const [ref, isView] = useInView();
+  let arr = new Array(20).fill(1);
 
   useEffect(() => {
     if (isView && getNextPageIsPossible) {
@@ -22,9 +22,9 @@ const InitialList = () => {
   return (
     <div>
       <ListTitle>Top Searches</ListTitle>
-      {
-        // 데이터를 불러오는데 성공하고 데이터가 0개가 아닐 때 렌더링
-        getBoardIsSuccess && getBoard!.pages
+      {!isLoading
+        ? // 데이터를 불러오는데 성공하고 데이터가 0개가 아닐 때 렌더링
+          getBoardIsSuccess && getBoard!.pages
           ? getBoard!.pages.map((page_data: any, page_num: any) => {
               const board_page = page_data.board_page;
               //console.log(board_page);
@@ -47,7 +47,9 @@ const InitialList = () => {
               });
             })
           : null
-      }
+        : arr.map((arr, index) => {
+            return <SkeletonItem key={index} />;
+          })}
     </div>
   );
 };

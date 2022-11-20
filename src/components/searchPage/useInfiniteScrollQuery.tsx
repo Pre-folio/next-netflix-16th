@@ -18,6 +18,7 @@ export function useInfiniteScrollQuery() {
     fetchNextPage: getNextPage,
     isSuccess: getBoardIsSuccess,
     hasNextPage: getNextPageIsPossible,
+    isLoading: isLoading,
   } = useInfiniteQuery(['popular'], getInitialData, {
     getNextPageParam: (lastPage: any, pages: any) => {
       if (!lastPage.isLast) return lastPage.current_page + 1;
@@ -25,7 +26,7 @@ export function useInfiniteScrollQuery() {
     },
   });
 
-  return { getBoard, getNextPage, getBoardIsSuccess, getNextPageIsPossible };
+  return { getBoard, getNextPage, getBoardIsSuccess, getNextPageIsPossible, isLoading };
 }
 
 export function useInfiniteScrollSearchQuery(debouncedSearchWord: string) {
